@@ -1,0 +1,40 @@
+
+.head{
+    width: 100%;
+    padding: 0 .1rem;
+    height: .6rem;
+    color: #fff;
+    line-height: 1;
+    background: url(./../../src/assets/bg.png) no-repeat 0 0 / 100% 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.logo-box img{
+    width: .6rem;
+    height: .6rem;
+    position: relative;
+    top: .02rem;
+}
+.logo-box .cn{
+    font-size: .2rem;
+    margin-bottom: 5px;
+}
+.logo-box .en{
+    font-size: .13rem;
+}
+.app-box img{
+    width: .15rem;
+    height: .26rem;
+    margin-right: .1rem;
+}
+.app-box .cn{
+    color: #fff;
+    font-size: .12rem;
+    margin-bottom: 2px;
+}
+.app-box .en{
+    color: #fff;
+    font-size: .1rem;
+}
