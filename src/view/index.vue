@@ -65,133 +65,123 @@
 import { Toast, Indicator } from 'mint-ui'
 
 export default {
-  data() {
-    return {
-      list: [],
-      bitInfo: {},
-    };
-  },
-  methods: {
-    getList() {
-      Indicator.open('加载中...');
-      this.$axios.get("/api/market/market-rest/exchange-market-info", {
-          params: { exchangeCode: "binance" }
-        })
-        .then(res => {
-          Indicator.close();
-          if (res.data.code == 0) {
-            this.list = res.data.data;
-          }else{
-            Toast({
-              message: res.data.resultMsg,
-              position: 'bottom'
-            })
-          }
-        })
-        .catch(res => {
-          Indicator.close();
-          Toast({
-            message: '未知错误！',
-            position: 'bottom'
-          })
-        });
+    data() {
+        return {
+            list: [],
+            bitInfo: {},
+        };
     },
-    getExInfo() {
-        this.$axios({
-            method: 'post',
-            url: '/api/market/market-rest/select-exchangeList',
-            data: { exchangeId: "673" },
-        })
-        .then(res => {
-            if(res.data.code == 0){
-                this.bitInfo = res.data.data;
-            }else{
+    methods: {
+        getList() {
+            Indicator.open('加载中...');
+            this.$axios.get("/api/market/market-rest/exchange-market-info", {
+                params: { exchangeCode: "binance" }
+            })
+            .then(res => {
+                Indicator.close();
+                if (res.data.code == 0) {
+                    this.list = res.data.data;
+                }else{
+                    Toast({
+                        message: res.data.resultMsg,
+                        position: 'bottom'
+                    })
+                }
+            })
+            .catch(res => {
+                Indicator.close();
                 Toast({
-                    message: res.data.resultMsg,
+                    message: '未知错误！',
                     position: 'bottom'
                 })
-            }
-        })
-        .catch(res => {
-            Toast({
-                message: '未知错误！',
-                position: 'bottom'
+            });
+        },
+        getExInfo() {
+            this.$axios({
+                method: 'post',
+                url: '/api/market/market-rest/select-exchangeList',
+                data: { exchangeId: "673" },
             })
-        })
+            .then(res => {
+                if(res.data.code == 0){
+                    this.bitInfo = res.data.data;
+                }else{
+                    Toast({
+                        message: res.data.resultMsg,
+                        position: 'bottom'
+                    })
+                }
+            })
+            .catch(res => {
+                Toast({
+                    message: '未知错误！',
+                    position: 'bottom'
+                })
+            })
+        },
+        scrollToTop() {
+            let st = document.documentElement.scrollTop;
+            if (st > 0) {
+                window.requestAnimationFrame(this.scrollToTop);
+                window.scrollTo(0, st - (st / 5));
+            }
+        },
     },
-    scrollToTop() {
-        let st = document.documentElement.scrollTop;
-        if (st > 0) {
-            window.requestAnimationFrame(this.scrollToTop);
-            window.scrollTo(0, st - (st / 5));
+    computed: {
+        appLink() {
+            var u = navigator.userAgent;
+            if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
+                return '';
+            }else if(u.indexOf('iPhone') > -1){
+                return '';
+            }else{
+                return '';
+            }
         }
     },
-    getSystem() {
-        var u = navigator.userAgent;
-        if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
-            //Android
-            this.appLink = '';
-        }else if(u.indexOf('iPhone') > -1){
-            //IOS
-            this.appLink = '';
-        }    
-    }
-  },
-  computed: {
-      appLink() {
-        var u = navigator.userAgent;
-        if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
-            return '';
-        }else if(u.indexOf('iPhone') > -1){
-            return '';
-        }else{
-            return '';
+    filters: {
+        numFmt: function(num) {
+            if(!num || num == '' || isNaN(Number(num))){
+                return 0;
+            }else if(num < 1){
+                return parseFloat(parseFloat(num).toFixed(8));
+            }else if(num < 10000){
+                return parseFloat(parseFloat(num).toFixed(2));
+            }else if(num < 100000000){
+                num = num / 10000;
+                return parseFloat(parseFloat(num).toFixed(2)) + '万';
+            }else{
+                num = num / 100000000;
+                return parseFloat(parseFloat(num).toFixed(2)) + '亿';
+            }
+        },
+        numFmt2: function(num) {
+            return parseFloat(parseFloat(num).toFixed(2));
         }
-      }
-  },
-  filters: {
-    numFmt: function(num) {
-      if(!num || num == '' || isNaN(Number(num))){
-          return 0;
-      }else if(num < 1){
-          return parseFloat(parseFloat(num).toFixed(8));
-      }else if(num < 10000){
-          return parseFloat(parseFloat(num).toFixed(2));
-      }else if(num < 100000000){
-          num = num / 10000;
-          return parseFloat(parseFloat(num).toFixed(2)) + '万';
-      }else{
-          num = num / 100000000;
-          return parseFloat(parseFloat(num).toFixed(2)) + '亿';
-      }
     },
-    numFmt2: function(num) {
-        return parseFloat(parseFloat(num).toFixed(2));
-    }
-  },
-  mounted() {
-    this.getExInfo();
-    this.getList();
-
-    document.documentElement.style.fontSize =
-      document.documentElement.clientWidth / 375 * 10 + 90 + "px";
-    window.onresize = function() {
-      document.documentElement.style.fontSize =
-        document.documentElement.clientWidth / 375 * 10 + 90 + "px";
-    };
-    document.addEventListener('scroll', function(e){
-        let st = document.documentElement.scrollTop;
-        if(st > 500){
-            document.getElementById('toTop').style.display = 'block';
-        }else{
-            document.getElementById('toTop').style.display = 'none';
-        }
-    }, false);
-    setInterval(function() {
+    mounted() {
+        this.getExInfo();
         this.getList();
-    }.bind(this), 60000);
-  }
-};
+
+        document.documentElement.style.fontSize =
+        document.documentElement.clientWidth / 375 * 10 + 90 + "px";
+        window.onresize = function() {
+        document.documentElement.style.fontSize =
+            document.documentElement.clientWidth / 375 * 10 + 90 + "px";
+        };
+        document.addEventListener('scroll', function(e){
+            let st = document.documentElement.scrollTop;
+            if(st > 500){
+                document.getElementById('toTop').style.display = 'block';
+            }else{
+                document.getElementById('toTop').style.display = 'none';
+            }
+        }, false);
+        setInterval(function() {
+            this.getList();
+        }.bind(this), 60000);
+    }
+}
 </script>
 
 <style>
