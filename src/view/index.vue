@@ -8,7 +8,7 @@
                     <p class="en">Bitane</p>
                 </div>
             </div>
-            <a class="app-box flex fcen">
+            <a :href="appLink" class="app-box flex fcen">
                 <img src="./../assets/phone.png" alt="">
                 <div class="logo-txt fcol spc">
                     <p class="cn">币探App下载</p>
@@ -16,52 +16,182 @@
                 </div>
             </a>
         </div>
+        <div class="body">
+            <div class="web flex">
+                <img src="./../assets/binance.png" alt="币安网logo">
+                <div class="txt fcol spc">
+                    <p class="cn">币安网(Binance)</p>
+                    <a :href="bitInfo.exchangeWebsiteAddress" class="link">{{bitInfo.exchangeWebsiteAddress}}</a>
+                </div>
+            </div>
+            <div class="vol-box flex spb">
+                <div class="vol fcol spb">
+                    <p class="txt">成交额(24H):</p>
+                    <p class="num">¥ {{bitInfo.turnoverCNY | numFmt}}<span class="us">约${{bitInfo.turnoverUSD | numFmt}}</span></p>
+                </div>
+                <div class="vol fcol spb">
+                    <p class="rank">排名:NO{{bitInfo.ranking}}</p>
+                    <p class="country">国家:{{bitInfo.countryName}}</p>
+                </div>
+            </div>
+            <div class="intro">
+                <p>{{bitInfo.exchangeAbstract}}</p>
+            </div>
+            <div class="wrapper ptb10">
+                <h2 class="title">行情</h2>
+                <div class="market-list">
+                    <a href="javascript:;" class="item flex spb fcen" v-for="item in list" :key="item.kindCode">
+                        <div class="con">
+                            <p class="name">{{item.kindName}}</p>
+                            <p class="ex">{{item.kindName}}<span>/{{item.kindCode.split('/')[1]}}</span></p>
+                            <p class="vol">量{{item.volume | numFmt}}{{item.kindCode.split('/')[1]}}</p>
+                        </div>
+                        <div class="price-box">
+                            <p class="price">{{item.price | numFmt}}</p>
+                            <p class="cny">¥ {{item.legalTendeCNY | numFmt}}</p>
+                        </div>
+                        <div class="rate up" v-if="item.rose > 0">+{{item.rose | numFmt2}}%</div>
+                        <div class="rate" v-if="item.rose == 0">0%</div>
+                        <div class="rate down" v-if="item.rose < 0">-{{Math.abs(item.rose) | numFmt2}}%</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <a href="javascript:;" class="to-top" id="toTop" @click="scrollToTop"></a>
     </div>
 </template>
 
 <script>
-// import { exchangeList } from './../api/api';
-import { numFmt } from './../utils/num-format'
+import { Toast, Indicator } from 'mint-ui'
+
 export default {
-    data() {
-        return {
-            list: [],
-            
-        }
-    },
-    methods: {
-        getList() {
-            this.$axios.get('/api/market/market-rest/exchange-market-info', {params: {exchangeCode: 'binance'}}).then(res => {
-                // console.log(res.data);
-                if(res.data.code == 0){
-                    this.list = res.data.data;
-                }
-            }).catch(res => {
-                console.log(res);
+  data() {
+    return {
+      list: [],
+      bitInfo: {},
+    };
+  },
+  methods: {
+    getList() {
+      Indicator.open('加载中...');
+      this.$axios.get("/api/market/market-rest/exchange-market-info", {
+          params: { exchangeCode: "binance" }
+        })
+        .then(res => {
+          Indicator.close();
+          if (res.data.code == 0) {
+            this.list = res.data.data;
+          }else{
+            Toast({
+              message: res.data.resultMsg,
+              position: 'bottom'
             })
-        },
+          }
+        })
+        .catch(res => {
+          Indicator.close();
+          Toast({
+            message: '未知错误！',
+            position: 'bottom'
+          })
+        });
     },
-    filters: {
-        numFmt1: function(num) {
-            return numFmt(num);
-        },
-        numFmt2: function(num) {
-            if(num && num > 100000){
-                num = num / 10000;
-                return numFmt(num, 1) + '万';
+    getExInfo() {
+        this.$axios({
+            method: 'post',
+            url: '/api/market/market-rest/select-exchangeList',
+            data: { exchangeId: "673" },
+        })
+        .then(res => {
+            if(res.data.code == 0){
+                this.bitInfo = res.data.data;
             }else{
-                return numFmt(num);
+                Toast({
+                    message: res.data.resultMsg,
+                    position: 'bottom'
+                })
             }
+        })
+        .catch(res => {
+            Toast({
+                message: '未知错误！',
+                position: 'bottom'
+            })
+        })
+    },
+    scrollToTop() {
+        let st = document.documentElement.scrollTop;
+        if (st > 0) {
+            window.requestAnimationFrame(this.scrollToTop);
+            window.scrollTo(0, st - (st / 5));
         }
     },
-    mounted() {
-        this.getList();
-        document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 10 + 90 + 'px';
-        window.onresize = function(){
-            document.documentElement.style.fontSize = document.documentElement.clientWidth / 375 * 10 + 90 + 'px';
-        }
+    getSystem() {
+        var u = navigator.userAgent;
+        if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
+            //Android
+            this.appLink = '';
+        }else if(u.indexOf('iPhone') > -1){
+            //IOS
+            this.appLink = '';
+        }    
     }
-}
+  },
+  computed: {
+      appLink() {
+        var u = navigator.userAgent;
+        if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
+            return '';
+        }else if(u.indexOf('iPhone') > -1){
+            return '';
+        }else{
+            return '';
+        }
+      }
+  },
+  filters: {
+    numFmt: function(num) {
+      if(!num || num == '' || isNaN(Number(num))){
+          return 0;
+      }else if(num < 1){
+          return parseFloat(parseFloat(num).toFixed(8));
+      }else if(num < 10000){
+          return parseFloat(parseFloat(num).toFixed(2));
+      }else if(num < 100000000){
+          num = num / 10000;
+          return parseFloat(parseFloat(num).toFixed(2)) + '万';
+      }else{
+          num = num / 100000000;
+          return parseFloat(parseFloat(num).toFixed(2)) + '亿';
+      }
+    },
+    numFmt2: function(num) {
+        return parseFloat(parseFloat(num).toFixed(2));
+    }
+  },
+  mounted() {
+    this.getExInfo();
+    this.getList();
+
+    document.documentElement.style.fontSize =
+      document.documentElement.clientWidth / 375 * 10 + 90 + "px";
+    window.onresize = function() {
+      document.documentElement.style.fontSize =
+        document.documentElement.clientWidth / 375 * 10 + 90 + "px";
+    };
+    document.addEventListener('scroll', function(e){
+        let st = document.documentElement.scrollTop;
+        if(st > 500){
+            document.getElementById('toTop').style.display = 'block';
+        }else{
+            document.getElementById('toTop').style.display = 'none';
+        }
+    }, false);
+    setInterval(function() {
+        this.getList();
+    }.bind(this), 60000);
+  }
+};
 </script>
 
 <style>

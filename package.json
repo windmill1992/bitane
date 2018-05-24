@@ -11,10 +11,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "highcharts": "^6.1.0",
     "mint-ui": "^2.2.13",
     "vue": "^2.5.2",
-    "vue-highcharts": "0.0.10",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
