@@ -130,7 +130,7 @@ html, body{
 }
 .market-list .name {
     color: #999;
-    font-size: .12rem;
+    font-size: .1rem;
 }
 .market-list .ex {
     font-size: .15rem;
@@ -142,19 +142,19 @@ html, body{
     font-size: .12rem;
 }
 .market-list .vol {
-    font-size: .12rem;
+    font-size: .1rem;
     color: #999;
 }
 .market-list .price-box{
     width: 33%;
 }
 .market-list .price {
-    font-size: .15rem;
+    font-size: .14rem;
     color: #151419;
     margin-bottom: 5px;
 }
 .market-list .cny {
-    font-size: .12rem;
+    font-size: .1rem;
     color: #999;
 }
 .market-list .rate {

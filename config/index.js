@@ -14,6 +14,7 @@ module.exports = {
       '/api': {
         target: 'https://bitane.muzhao888.com/', //'http://115.231.223.139:8763/',
         changeOrigin: true,
+        secure: true,
         pathRewrite: {
           '^/api': '/'
         }

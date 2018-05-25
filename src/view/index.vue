@@ -27,7 +27,7 @@
             <div class="vol-box flex spb">
                 <div class="vol fcol spb">
                     <p class="txt">成交额(24H):</p>
-                    <p class="num">¥ {{bitInfo.turnoverCNY | numFmt}}<span class="us">约${{bitInfo.turnoverUSD | numFmt}}</span></p>
+                    <p class="num">¥{{bitInfo.turnoverCNY | numFmt}}<span class="us">约${{bitInfo.turnoverUSD | numFmt}}</span></p>
                 </div>
                 <div class="vol fcol spb">
                     <p class="rank">排名:NO{{bitInfo.ranking}}</p>
@@ -43,7 +43,7 @@
                     <a href="javascript:;" class="item flex spb fcen" v-for="item in list" :key="item.kindCode">
                         <div class="con">
                             <p class="name">{{item.kindName}}</p>
-                            <p class="ex">{{item.kindName}}<span>/{{item.kindCode.split('/')[1]}}</span></p>
+                            <p class="ex">{{item.kindCode.split('/')[0]}}<span>/{{item.kindCode.split('/')[1]}}</span></p>
                             <p class="vol">量{{item.volume | numFmt}}{{item.kindCode.split('/')[1]}}</p>
                         </div>
                         <div class="price-box">
@@ -51,7 +51,7 @@
                             <p class="cny">¥ {{item.legalTendeCNY | numFmt}}</p>
                         </div>
                         <div class="rate up" v-if="item.rose > 0">+{{item.rose | numFmt2}}%</div>
-                        <div class="rate" v-if="item.rose == 0">0%</div>
+                        <div class="rate" v-if="item.rose == 0">0.0%</div>
                         <div class="rate down" v-if="item.rose < 0">-{{Math.abs(item.rose) | numFmt2}}%</div>
                     </a>
                 </div>
@@ -63,6 +63,7 @@
 
 <script>
 import { Toast, Indicator } from 'mint-ui'
+import { baseUrl } from './../api/baseUrl'
 
 export default {
     data() {
@@ -73,8 +74,7 @@ export default {
     },
     methods: {
         getList() {
-            Indicator.open('加载中...');
-            this.$axios.get("/api/market/market-rest/exchange-market-info", {
+            this.$axios.get(`${baseUrl}/market/market-rest/exchange-market-info`, {
                 params: { exchangeCode: "binance" }
             })
             .then(res => {
@@ -97,11 +97,7 @@ export default {
             });
         },
         getExInfo() {
-            this.$axios({
-                method: 'post',
-                url: '/api/market/market-rest/select-exchangeList',
-                data: { exchangeId: "673" },
-            })
+            this.$axios.post(`${baseUrl}/market/market-rest/select-exchangeList`, { exchangeId: "673" })
             .then(res => {
                 if(res.data.code == 0){
                     this.bitInfo = res.data.data;
@@ -131,9 +127,9 @@ export default {
         appLink() {
             var u = navigator.userAgent;
             if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
-                return '';
+                return 'http://a.app.qq.com/o/simple.jsp?pkgname=com.ytkj.bitan&fromcase=40002';
             }else if(u.indexOf('iPhone') > -1){
-                return '';
+                return 'https://itunes.apple.com/us/app/%E5%B8%81%E6%8E%A2/id1335517724?l=zh&ls=1&mt=8';
             }else{
                 return '';
             }
@@ -160,6 +156,7 @@ export default {
         }
     },
     mounted() {
+        Indicator.open('加载中...');
         this.getExInfo();
         this.getList();
 
