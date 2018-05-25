@@ -2,14 +2,14 @@
     <div class="container">
         <div class="head flex spb">
             <div class="logo-box flex fcen">
-                <img src="./../assets/logo.png" alt="币探logo">
+                <img src="./../../static/img/logo.png" alt="币探logo">
                 <div class="logo-txt fcol spc">
                     <p class="cn">币探</p>
                     <p class="en">Bitane</p>
                 </div>
             </div>
             <a :href="appLink" class="app-box flex fcen">
-                <img src="./../assets/phone.png" alt="">
+                <img src="./../../static/img/phone.png" alt="">
                 <div class="logo-txt fcol spc">
                     <p class="cn">币探App下载</p>
                     <p class="en">www.bitane.io</p>
@@ -18,7 +18,7 @@
         </div>
         <div class="body">
             <div class="web flex">
-                <img src="./../assets/binance.png" alt="币安网logo">
+                <img src="./../../static/img/binance.png" alt="币安网logo">
                 <div class="txt fcol spc">
                     <p class="cn">币安网(Binance)</p>
                     <a :href="bitInfo.exchangeWebsiteAddress" class="link">{{bitInfo.exchangeWebsiteAddress}}</a>
@@ -177,6 +177,14 @@ export default {
         setInterval(function() {
             this.getList();
         }.bind(this), 60000);
+        
+        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+        if(isMobile){
+           
+        }else{
+            this.$router.push({ path: '/index' });
+            window.location.reload();
+        }
     }
 }
 </script>
