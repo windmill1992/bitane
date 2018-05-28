@@ -17,6 +17,8 @@
             </a>
         </div>
         <div class="body">
+            <!-- <a href="javascript:;" @click="linkToDetail">binance</a> -->
+            <router-link :to="{ name: 'Detail', params: { name: 'Binance', code: 'binance', title: 'binance网' }, meta: { title: 'binance网' } }">binance</router-link>
             <div class="web flex">
                 <img src="./../../static/img/binance.png" alt="币安网logo">
                 <div class="txt fcol spc">
@@ -121,7 +123,7 @@ export default {
                 window.requestAnimationFrame(this.scrollToTop);
                 window.scrollTo(0, st - (st / 5));
             }
-        },
+        }
     },
     computed: {
         appLink() {
