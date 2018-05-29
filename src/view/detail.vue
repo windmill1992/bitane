@@ -164,6 +164,12 @@ export default {
             this.code = obj.code;
             if(obj.title){
                 setTitle(obj.title);
+                sessionStorage.setItem('title', obj.title);
+            }else{
+                let t = sessionStorage.getItem('title')
+                if(t){
+                    setTitle(t);
+                }
             }
         }
         Indicator.open('加载中...');
@@ -200,6 +206,6 @@ export default {
 </script>
 
 <style>
-@import url(./../../static/css/base.css);
-@import url(./../../static/css/detail.css);
+@import url(./../assets/css/base.css);
+@import url(./../assets/css/detail.css);
 </style>

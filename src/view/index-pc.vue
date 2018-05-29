@@ -195,6 +195,6 @@ export default {
 </script>
 
 <style>
-@import url(./../../static/css/base.css);
-@import url(./../../static/css/index-pc.css);
+@import url(./../assets/css/base.css);
+@import url(./../assets/css/index-pc.css);
 </style>

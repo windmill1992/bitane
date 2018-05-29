@@ -18,7 +18,7 @@
         </div>
         <div class="body">
             <!-- <a href="javascript:;" @click="linkToDetail">binance</a> -->
-            <router-link :to="{ name: 'Detail', params: { name: 'Binance', code: 'binance', title: 'binance网' }, meta: { title: 'binance网' } }">binance</router-link>
+            <router-link :to="{ name: 'Detail', params: { code: 'binance', title: 'binance网' } }">binance</router-link>
             <div class="web flex">
                 <img src="./../../static/img/binance.png" alt="币安网logo">
                 <div class="txt fcol spc">
@@ -192,6 +192,6 @@ export default {
 </script>
 
 <style>
-@import url(./../../static/css/base.css);
-@import url(./../../static/css/index.css);
+@import url(./../assets/css/base.css);
+@import url(./../assets/css/index.css);
 </style>

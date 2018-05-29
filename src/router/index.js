@@ -26,7 +26,7 @@ const router = new Router({
       }
     },
     {
-      path: '/exchange/:name',
+      path: '/exchange/:code',
       name: 'Detail',
       component: Detail,
       meta: {
