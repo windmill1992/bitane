@@ -6,7 +6,8 @@ import NotFound from './../404.vue'
 import Index from './../view/index.vue'
 import Detail from './../view/detail.vue'
 import IndexPc from './../view/index-pc.vue'
-import DetailPc from './../view/detail-pc.vue'
+import MarketPc from './../view/market-pc.vue'
+import AboutPc from './../view/about-pc.vue'
 
 Vue.use(Router)
 
@@ -18,7 +19,7 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/exchange',
+      path: '/m_index',
       name: 'Index',
       component: Index,
       meta: {
@@ -26,9 +27,9 @@ const router = new Router({
       }
     },
     {
-      path: '/exchange/:code',
-      name: 'Detail',
-      component: Detail,
+      path: '/market/:code',
+      name: 'MarketPc',
+      component: MarketPc,
       meta: {
         title: '交易平台实时行情-币探'
       }
@@ -39,10 +40,15 @@ const router = new Router({
       component: IndexPc,
       meta: {
         title: '全球数字货币交易平台-币探'
-      },
-      children: [
-        { path: '/index/ex/:code', name: 'DetailPc', component: DetailPc, meta: { title: '交易平台实时行情-币探' } }
-      ]
+      }
+    },
+    {
+      path: '/about',
+      name: 'AboutPc',
+      component: AboutPc,
+      meta: {
+        title: '关于我们-币探'
+      }
     },
     {
       path: '/404',
@@ -55,7 +61,7 @@ const router = new Router({
     },
     {
       path: '/',
-      redirect: { path: '/exchange' }
+      redirect: { path: '/m_index' }
     },
     {
       path: '*',

@@ -1,73 +1,49 @@
-html, body{
+html, body {
     max-width: none;
     font-size: 14px;
     background: #f4f4f4;
 }
-.head-wrapper{
-    width: 100%;
-    height: 165px;
-    background: url(./../img/bg2.png) no-repeat 0 0 / 100% 100%;
-}
-.head{
+
+.body {
     margin: 0 auto;
-    height: 165px;
-    width: 1200px;
-}
-.head .logo-box{
-    position: relative;
-    left: -15px;
-    overflow: hidden;
-}
-.head .logo-box img{
-    width: 120px;
-    height: 120px;
-    position: relative;
-    top: 3px;
-    margin: 5px 0 0;
-}
-.head .logo-box .logo-txt{
+    height: 100%;
+    text-align: center;
     color: #fff;
-    margin-top: 30px;
-}
-.head .logo-box .cn{
-    font-size: 36px;
-    line-height: 1;
-    margin-bottom: 10px;
-    letter-spacing: 5px;
-}
-.head .logo-box .en{
-    font-size: 24px;
-}
-.head .txt{
-    font-size: 18px;
-    color: #fff;
-}
-.head .right{
-    overflow: hidden;
-    height: 103px;
-    margin: 31px 0;
-}
-.head .down{
-    display: block;
-    overflow: hidden;
-    color: #fff;
-    font-size: 20px;
-    width: 162px;
-    height: 44px;
-    line-height: 44px;
-    padding-left: 10px;
-    border: 1px solid #fff;
-    border-radius: 3px;
-    margin-bottom: 11px;
-}
-.head .down img{
-    width: 25px;
-    height: auto;
-    vertical-align: -7px;
-    margin-right: 6px;
+    padding-top: 30px;
+    background: url(./../img/bg@2x.png) no-repeat 0 0 / 100% 100%;
 }
 
-.body{
-    margin: 0 auto;
-    width: 1200px;
+.txt1 {
+    font-size: 42px;
+    line-height: 65px;
+    font-family: 'PingFang-SC-Medium';
+}
+
+.txt2 {
+    margin-top: 20px;
+}
+
+.dl-box {
+    margin: 60px auto;
+    overflow: hidden;
+}
+
+.dl-box .dl-a {
+    display: inline-block;
+    width: 230px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 60px;
+    border: 2px solid #fff;
+}
+
+.dl-box .dl-a:first-child {
+    margin-right: 90px;
+}
+
+.mobile {
+    width: 748px;
 }
