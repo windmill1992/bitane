@@ -2,14 +2,14 @@
     <div class="container">
         <div class="head flex spb">
             <div class="logo-box flex fcen">
-                <img src="./../../static/img/logo.png" alt="币探logo">
+                <img src="./../assets/img/logo.png" alt="币探logo">
                 <div class="logo-txt fcol spc">
                     <p class="cn">币探</p>
                     <p class="en">Bitane</p>
                 </div>
             </div>
             <a :href="appLink" class="app-box flex fcen">
-                <img src="./../../static/img/phone.png" alt="">
+                <img src="./../assets/img/phone.png" alt="">
                 <div class="logo-txt fcol spc">
                     <p class="cn">币探App下载</p>
                     <p class="en">www.bitane.io</p>
@@ -20,7 +20,7 @@
             <!-- <a href="javascript:;" @click="linkToDetail">binance</a> -->
             <router-link :to="{ name: 'Detail', params: { code: 'binance', title: 'binance网' } }">binance</router-link>
             <div class="web flex">
-                <img src="./../../static/img/binance.png" alt="币安网logo">
+                <img src="./../assets/img/binance.png" alt="币安网logo">
                 <div class="txt fcol spc">
                     <p class="cn">币安网(Binance)</p>
                     <a :href="bitInfo.exchangeWebsiteAddress" class="link">{{bitInfo.exchangeWebsiteAddress}}</a>

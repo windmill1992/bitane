@@ -1,0 +1,224 @@
+html, body{
+    max-width: none;
+    font-size: 14px;
+    background: #f4f4f4;
+}
+.head-wrapper{
+    width: 100%;
+    height: 165px;
+    background: url(./../img/bg2.png) no-repeat 0 0 / 100% 100%;
+}
+.head{
+    margin: 0 auto;
+    height: 165px;
+    width: 1200px;
+}
+.head .logo-box{
+    position: relative;
+    left: -15px;
+    overflow: hidden;
+}
+.head .logo-box img{
+    width: 120px;
+    height: 120px;
+    position: relative;
+    top: 3px;
+    margin: 5px 0 0;
+}
+.head .logo-box .logo-txt{
+    color: #fff;
+    margin-top: 30px;
+}
+.head .logo-box .cn{
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+}
+.head .logo-box .en{
+    font-size: 24px;
+}
+.head .txt{
+    font-size: 18px;
+    color: #fff;
+}
+.head .right{
+    overflow: hidden;
+    height: 103px;
+    margin: 31px 0;
+}
+.head .down{
+    display: block;
+    overflow: hidden;
+    color: #fff;
+    font-size: 20px;
+    width: 162px;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 10px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    margin-bottom: 11px;
+}
+.head .down img{
+    width: 25px;
+    height: auto;
+    vertical-align: -7px;
+    margin-right: 6px;
+}
+
+.body{
+    margin: 0 auto;
+    width: 1200px;
+}
+.ex-info{
+    padding: 24px;
+    background: #fff;
+    overflow: hidden;
+}
+.ex-info .left{
+    width: 70%;
+    color: #111210;
+    border-right: 1px solid #ddd;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.ex-info .ex-logo img{
+    width: 136px;
+    height: 136px;
+    margin-right: 28px;
+    vertical-align: top;
+}
+.ex-info .info{
+    height: 136px;
+    padding-right: 25px;
+    position: relative;
+    word-break: break-all;
+    max-width: 615px;
+}
+.ex-info .info .name{
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+.ex-info .info .intro{
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 5px;
+}
+.ex-info .info .link{
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    line-height: 1;
+    white-space: nowrap;
+}
+.ex-info .info .link a{
+    color: #128EE9;
+}
+.ex-info .info .link a:hover{
+    text-decoration: underline;
+}
+.ex-info .info .link .country{
+    padding-left: 40px;
+}
+.ex-info .right{
+    width: 30%;
+    height: 136px;
+    padding: 30px;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.ex-info .right .top{
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+.ex-info .right .bot{
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1;
+    position: relative;
+}
+.ex-info .right .p1{
+    font-size: 16px;
+    color: #666;
+}
+.ex-info .right .rank{
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 2px 5px;
+    background: #108EE9;
+    border-radius: 2px;
+    margin: 0;
+}
+.ex-info .right .price{
+    font-size: 30px;
+    color: #111210;
+}
+.ex-info .right .us{
+    font-size: 16px;
+    color: #666;
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+}
+
+.wrapper{
+    margin-top: 12px;
+    background: #fff;
+    padding: 24px;
+}
+.wrapper .title{
+    font-size: 28px;
+    color: #108EE8;
+    margin-bottom: 20px;
+}
+.market{
+    width: 100%;
+    border-collapse: collapse;
+}
+.market th{
+    text-align: left;
+    padding-left: 25px;
+    background: #f4f4f4;
+    font-size: 18px;
+    color: #666;
+    height: 52px;
+    line-height: 52px;
+}
+.market td{
+    font-size: 18px;
+    height: 52px;
+    line-height: 52px;
+    background: #fff;
+    color: #111210;
+    padding-left: 25px;
+}
+.market td.name{
+    width: 100px;
+    color: #128EE9;
+}
+.market td.up{
+    color: #00AC1E;
+}
+.market td.down{
+    color: #C52B18;
+}
+.to-top{
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    margin-left: 600px;
+    background: #34a2d6 url(./../img/totop.png) no-repeat center;
+    background-size: 30px 30px;
+    opacity: 0.6;
+    display: none;
+}
