@@ -1,37 +1,14 @@
 <template>
     <div class="container">
-        <div class="head-wrapper">
-            <div class="head">
-                <div class="left fl">
-                    <div class="logo-box">
-                        <img src="./../assets/img/logo.png" alt="logo" class="fl">
-                        <div class="logo-txt fl">
-                            <p class="cn">币探</p>
-                            <p class="en">Bitane</p>
-                        </div>
-                    </div>
-                    <div class="txt">数字资产，全网行情触手可及</div>
-                </div>
-                <div class="right fr">
-                    <a href="javascript:;" class="down" @click="dlIOS">
-                        <img src="./../assets/img/ios.png" alt="币探ios下载">
-                        <span>iOS 下载</span>
-                    </a>
-                    <a href="javascript:;" class="down" @click="dlAndroid">
-                        <img src="./../assets/img/Android.png" alt="币探android下载">
-                        <span>Android 下载</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="body">
+        <head-pc to="market" :code="code" class="heads"></head-pc>
+        <div class="m-body" style="width: 1200px;">
             <div class="ex-info">
                 <div class="left fl">
                     <div class="ex-logo fl">
-                        <img src="./../assets/img/binance.png" alt="币安网logo">
+                        <img :src="logos[code]" alt="logo">
                     </div>
                     <div class="info fl">
-                        <p class="name">币安网(Binance)</p>
+                        <p class="name">{{title}}({{code | capitalize}})</p>
                         <p class="intro">{{bitInfo.exchangeAbstract}}</p>
                         <p class="link">
                             <span>官网地址：</span>
@@ -80,20 +57,40 @@
 </template>
 
 <script>
+import headPc from './../components/head-pc'
 import { Toast, Indicator } from 'mint-ui'
 import { baseUrl } from './../api/baseUrl'
+import { setTitle } from './../utils/setTitle'
 
 export default {
     data() {
         return {
             list: [],
-            bitInfo: {}
+            bitInfo: {},
+            code: '',
+            title: '',
+            logos: {
+                'huobi.pro': './../../static/img/huobi.png',
+                'okex': './../../static/img/okex.png',
+                'binance': './../../static/img/binance.png',
+                'bitfinex': './../../static/img/bitfinex.png',
+                'bittrex': './../../static/img/bittrex.jpg',
+                'bitstamp': './../../static/img/bitstamp.png'
+            },
+            ids: {
+                'huobi.pro': 724,
+                'okex': 664,
+                'binance': 673,
+                'bitfinex': 675,
+                'bittrex': 666,
+                'bitstamp': 771
+            }
         }
     },
     methods: {
         getList() {
             this.$axios.get(`${baseUrl}/market/market-rest/exchange-market-info`, {
-                params: { exchangeCode: "binance" }
+                params: { exchangeCode: this.code }
             })
             .then(res => {
                 Indicator.close();
@@ -115,7 +112,7 @@ export default {
             });
         },
         getExInfo() {
-            this.$axios.post(`${baseUrl}/market/market-rest/select-exchangeList`, { exchangeId: "673" })
+            this.$axios.post(`${baseUrl}/market/market-rest/select-exchangeList`, { exchangeId: this.ids[this.code] })
             .then(res => {
                 if(res.data.code == 0){
                     this.bitInfo = res.data.data;
@@ -165,12 +162,32 @@ export default {
         },
         numFmt2: function(num) {
             return parseFloat(parseFloat(num).toFixed(2));
+        },
+        capitalize: function (value) {
+            if (!value) return ''
+            value = value.toString();
+            return value.charAt(0).toUpperCase() + value.slice(1);
         }
     },
     mounted() {
-        Indicator.open('加载中...');
-        this.getExInfo();
-        this.getList();
+        if(this.$route.params){
+            let obj = this.$route.params;
+            this.code = obj.code;
+            if(obj.title){
+                this.title = obj.title;
+                setTitle(obj.title);
+                sessionStorage.setItem('title', obj.title);
+            }else{
+                let t = sessionStorage.getItem('title')
+                if(t){
+                    this.title = t;
+                    setTitle(t);
+                }
+            }
+            Indicator.open('加载中...');
+            this.getExInfo();
+            this.getList();
+        }
 
         document.documentElement.style.fontSize = "100px";
         document.addEventListener('scroll', function(e){
@@ -187,14 +204,39 @@ export default {
 
         let isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
         if(isMobile){
-            this.$router.push({ path: '/' });
+            this.$router.push({ path: '/m_market/'+ this.code });
             window.location.reload();
         }
+    },
+    watch: {
+        $route (to, from) {
+            if(this.code != to.params.code){
+                let obj = to.params;
+                this.code = obj.code;
+                if(obj.title){
+                    this.title = obj.title;
+                    setTitle(obj.title);
+                    sessionStorage.setItem('title', obj.title);
+                }else{
+                    let t = sessionStorage.getItem('title')
+                    if(t){
+                        this.title = t;
+                        setTitle(t);
+                    }
+                }
+                Indicator.open('加载中...');
+                this.getExInfo();
+                this.getList();
+            }
+        }
+    },
+    components: {
+        headPc
     }
 }
 </script>
 
 <style>
 @import url(./../assets/css/base.css);
-@import url(./../assets/css/code-pc.css);
+@import url(./../assets/css/market-pc.css);
 </style>

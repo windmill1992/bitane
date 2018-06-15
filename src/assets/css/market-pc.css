@@ -1,0 +1,198 @@
+html, body {
+  max-width: none;
+  font-size: 14px;
+  background: #f4f4f4;
+}
+.heads{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+.m-body {
+  margin: 160px auto 0;
+}
+
+.ex-info {
+  padding: 24px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.ex-info .left {
+  width: 70%;
+  color: #111210;
+  border-right: 1px solid #ddd;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ex-info .ex-logo img {
+  width: 136px;
+  height: 136px;
+  margin-right: 28px;
+  vertical-align: top;
+}
+
+.ex-info .info {
+  height: 136px;
+  padding-right: 25px;
+  position: relative;
+  word-break: break-all;
+  max-width: 615px;
+}
+
+.ex-info .info .name {
+  font-size: 28px;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.ex-info .info .intro {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ex-info .info .link {
+  font-size: 16px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.ex-info .info .link a {
+  color: #128EE9;
+}
+
+.ex-info .info .link a:hover {
+  text-decoration: underline;
+}
+
+.ex-info .info .link .country {
+  padding-left: 40px;
+}
+
+.ex-info .right {
+  width: 30%;
+  height: 136px;
+  padding: 30px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ex-info .right .top {
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.ex-info .right .bot {
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 1;
+  position: relative;
+}
+
+.ex-info .right .p1 {
+  font-size: 16px;
+  color: #666;
+}
+
+.ex-info .right .rank {
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 2px 5px;
+  background: #108EE9;
+  border-radius: 2px;
+  margin: 0;
+}
+
+.ex-info .right .price {
+  font-size: 30px;
+  color: #111210;
+}
+
+.ex-info .right .us {
+  font-size: 16px;
+  color: #666;
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+}
+
+.wrapper {
+  margin-top: 12px;
+  background: #fff;
+  padding: 24px;
+}
+
+.wrapper .title {
+  font-size: 28px;
+  color: #108EE8;
+  margin-bottom: 20px;
+}
+
+.market {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.market th {
+  text-align: left;
+  padding-left: 25px;
+  background: #f4f4f4;
+  font-size: 18px;
+  color: #666;
+  height: 52px;
+  line-height: 52px;
+}
+
+.market td {
+  font-size: 18px;
+  height: 52px;
+  line-height: 52px;
+  background: #fff;
+  color: #111210;
+  padding-left: 25px;
+}
+
+.market td.name {
+  width: 100px;
+  color: #128EE9;
+}
+
+.market td.up {
+  color: #00AC1E;
+}
+
+.market td.down {
+  color: #C52B18;
+}
+
+.to-top {
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  margin-left: 600px;
+  background: #34a2d6 url(./../img/totop.png) no-repeat center;
+  background-size: 30px 30px;
+  opacity: 0.6;
+  display: none;
+}

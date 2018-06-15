@@ -4,7 +4,8 @@ import Router from 'vue-router'
 import NotFound from './../404.vue'
 
 import Index from './../view/index.vue'
-import Detail from './../view/detail.vue'
+import Market from './../view/market.vue'
+import About from './../view/about.vue'
 import IndexPc from './../view/index-pc.vue'
 import MarketPc from './../view/market-pc.vue'
 import AboutPc from './../view/about-pc.vue'
@@ -27,11 +28,19 @@ const router = new Router({
       }
     },
     {
-      path: '/market/:code',
-      name: 'MarketPc',
-      component: MarketPc,
+      path: '/m_market/:code',
+      name: 'Market',
+      component: Market,
       meta: {
         title: '交易平台实时行情-币探'
+      }
+    },
+    {
+      path: '/m_about',
+      name: 'About',
+      component: About,
+      meta: {
+        title: '关于我们-币探'
       }
     },
     {
@@ -40,6 +49,14 @@ const router = new Router({
       component: IndexPc,
       meta: {
         title: '全球数字货币交易平台-币探'
+      }
+    },
+    {
+      path: '/market/:code',
+      name: 'MarketPc',
+      component: MarketPc,
+      meta: {
+        title: '交易平台实时行情-币探'
       }
     },
     {
@@ -61,7 +78,7 @@ const router = new Router({
     },
     {
       path: '/',
-      redirect: { path: '/m_index' }
+      redirect: { path: '/index' }
     },
     {
       path: '*',

@@ -1,27 +1,11 @@
 <template>
     <div class="container">
-        <router-view></router-view>
-        <div class="head flex spb">
-            <div class="logo-box flex fcen">
-                <img src="./../assets/img/logo.png" alt="币探logo">
-                <div class="logo-txt fcol spc">
-                    <p class="cn">币探</p>
-                    <p class="en">Bitane</p>
-                </div>
-            </div>
-            <a :href="appLink" class="app-box flex fcen">
-                <img src="./../assets/img/phone.png" alt="">
-                <div class="logo-txt fcol spc">
-                    <p class="cn">币探App下载</p>
-                    <p class="en">www.bitane.io</p>
-                </div>
-            </a>
-        </div>
+        <m-head to="market" :code="code"></m-head>
         <div class="body">
             <div class="web flex">
-                <img src="./../assets/img/binance.png" alt="币安网logo">
+                <img :src="logos[code]" alt="logo">
                 <div class="txt fcol spc">
-                    <p class="cn">币安网(Binance)</p>
+                    <p class="cn">{{title}}({{code | capitalize}})</p>
                     <a :href="bitInfo.exchangeWebsiteAddress" class="link">{{bitInfo.exchangeWebsiteAddress}}</a>
                 </div>
             </div>
@@ -66,13 +50,31 @@
 import { Toast, Indicator } from 'mint-ui'
 import { baseUrl } from './../api/baseUrl'
 import { setTitle } from './../utils/setTitle'
+import head from './../components/head'
 
 export default {
     data() {
         return {
             code: '',
+            title: '',
             list: [],
             bitInfo: {},
+            logos: {
+                'huobi.pro': './../../static/img/huobi.png',
+                'okex': './../../static/img/okex.png',
+                'binance': './../../static/img/binance.png',
+                'bitfinex': './../../static/img/bitfinex.png',
+                'bittrex': './../../static/img/bittrex.jpg',
+                'bitstamp': './../../static/img/bitstamp.png'
+            },
+            ids: {
+                'huobi.pro': 724,
+                'okex': 664,
+                'binance': 673,
+                'bitfinex': 675,
+                'bittrex': 666,
+                'bitstamp': 771
+            }
         };
     },
     methods: {
@@ -100,7 +102,7 @@ export default {
             });
         },
         getExInfo() {
-            this.$axios.post(`${baseUrl}/market/market-rest/select-exchangeList`, { exchangeId: "673" })
+            this.$axios.post(`${baseUrl}/market/market-rest/select-exchangeList`, { exchangeId: this.ids[this.code] })
             .then(res => {
                 if(res.data.code == 0){
                     this.bitInfo = res.data.data;
@@ -156,6 +158,11 @@ export default {
         },
         numFmt2: function(num) {
             return parseFloat(parseFloat(num).toFixed(2));
+        },
+        capitalize: function (value) {
+            if (!value) return ''
+            value = value.toString();
+            return value.charAt(0).toUpperCase() + value.slice(1);
         }
     },
     mounted() {
@@ -177,10 +184,10 @@ export default {
         this.getList();
 
         document.documentElement.style.fontSize =
-        document.documentElement.clientWidth / 375 * 10 + 90 + "px";
+        document.documentElement.clientWidth / 375 * 100 + "px";
         window.onresize = function() {
         document.documentElement.style.fontSize =
-            document.documentElement.clientWidth / 375 * 10 + 90 + "px";
+            document.documentElement.clientWidth / 375 * 100 + "px";
         };
         document.addEventListener('scroll', function(e){
             let st = document.documentElement.scrollTop;
@@ -198,14 +205,37 @@ export default {
         if(isMobile){
            
         }else{
-            this.$router.push({ path: '/index' });
+            this.$router.push({ path: '/market/'+ this.code });
             window.location.reload();
         }
-    }
+    },
+    watch: {
+        $route (to, from) {
+            if(this.code != to.params.code){
+                let obj = to.params;
+                this.code = obj.code;
+                if(obj.title){
+                    this.title = obj.title;
+                    setTitle(obj.title);
+                    sessionStorage.setItem('title', obj.title);
+                }else{
+                    let t = sessionStorage.getItem('title')
+                    if(t){
+                        this.title = t;
+                        setTitle(t);
+                    }
+                }
+                Indicator.open('加载中...');
+                this.getExInfo();
+                this.getList();
+            }
+        }
+    },
+    components: { 'm-head': head }
 }
 </script>
 
 <style>
 @import url(./../assets/css/base.css);
-@import url(./../assets/css/detail.css);
+@import url(./../assets/css/market.css);
 </style>

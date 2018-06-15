@@ -14,15 +14,12 @@
 </template>
 
 <script>
-import { Toast, Indicator } from 'mint-ui'
-import { baseUrl } from './../api/baseUrl'
 import headPc from './../components/head-pc'
 
 export default {
     data() {
         return {
-            list: [],
-            bitInfo: {}
+            
         }
     },
     methods: {
@@ -36,7 +33,7 @@ export default {
     mounted() {
         let isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
         if(isMobile){
-            this.$router.push({ path: '/' });
+            this.$router.push({ path: '/m_index' });
             window.location.reload();
         }
     },

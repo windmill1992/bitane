@@ -14,15 +14,15 @@
                 <div :class="{ on: (to == 'home') }"></div>
             </div>
             <div class="left fl">
-                <div class="nav" @click.prevent.stop="showExchange">MARKET</div>
+                <div class="nav down" :class="{ up: showEx }" @click.prevent.stop="showExchange" @mouseenter="showExchange">MARKET</div>
                 <div :class="{ on: (to == 'market') }"></div>
-                <div class="ex-list" :class="{show: showEx}">
-                    <router-link :to="{ path: '/market/1' }" class="ex-nav">火币PRO</router-link>
-                    <router-link :to="{ path: '/market/' }" class="ex-nav active">OKEX</router-link>
-                    <router-link :to="{ path: '/market/' }" class="ex-nav">币安网</router-link>
-                    <router-link :to="{ path: '/market/' }" class="ex-nav">Bitfinex</router-link>
-                    <router-link :to="{ path: '/market/' }" class="ex-nav">bittrex</router-link>
-                    <router-link :to="{ path: '/market/' }" class="ex-nav">Bitstamp</router-link>
+                <div class="ex-list" :class="{show: showEx}" @mouseleave="hideExchange">
+                    <router-link :to="{ name: 'MarketPc', params: { code: 'huobi.pro', title: '火币Pro' } }" class="ex-nav" :class="{active: code == 'huobi.pro'}">火币PRO</router-link>
+                    <router-link :to="{ name: 'MarketPc', params: { code: 'okex', title: 'OKEx' } }" class="ex-nav" :class="{active: code == 'okex'}">OKEX</router-link>
+                    <router-link :to="{ name: 'MarketPc', params: { code: 'binance', title: '币安网' } }" class="ex-nav" :class="{active: code == 'binance'}">币安网</router-link>
+                    <router-link :to="{ name: 'MarketPc', params: { code: 'bitfinex', title: 'Bitfinex' } }" class="ex-nav" :class="{active: code == 'bitfinex'}">Bitfinex</router-link>
+                    <router-link :to="{ name: 'MarketPc', params: { code: 'bittrex', title: 'Bittrex' } }" class="ex-nav" :class="{active: code == 'bittrex'}">Bittrex</router-link>
+                    <router-link :to="{ name: 'MarketPc', params: { code: 'bitstamp', title: 'Bitstamp' } }" class="ex-nav" :class="{active: code == 'bitstamp'}">Bitstamp</router-link>
                 </div>
             </div>
             <div class="left fl">
@@ -36,7 +36,7 @@
 <script>
 export default {
     props: [
-        "to" 
+        "to", "code"
     ],
     data() {
         return {
@@ -45,8 +45,11 @@ export default {
     },
     methods: {
         showExchange() {
-            this.showEx = !this.showEx;
+            this.showEx = true;
         },
+        hideExchange() {
+            this.showEx = false;
+        }
     },
     mounted() {
         let that = this;
@@ -58,6 +61,7 @@ export default {
 </script>
 
 <style scoped>
+@import url(./../assets/css/base.css);
 .head-wrapper{
     width: 100%;
     height: 160px;
@@ -66,7 +70,8 @@ export default {
 .head{
     margin: 0 auto;
     height: 160px;
-    width: 1200px;
+    min-width: 1200px;
+    max-width: 1370px;
 }
 .head .left{
     height: 60px;
@@ -96,6 +101,24 @@ export default {
     font-size: 18px;
     color: #fff;
     cursor: pointer;
+}
+.head .nav.down::after{
+    content: '';
+    display: inline-block;
+    width: 19px;
+    height: 10px;
+    background: url(./../assets/img/down@3x.png) no-repeat 0 0 / 100% 100%;
+    margin-left: 10px;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    transition: all .4s ease;
+}
+.head .nav.down.up::after{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 .head .left .on{
     width: 56px;
@@ -130,10 +153,21 @@ export default {
     text-align: center;
 }
 .ex-list .ex-nav:hover{
-    background: #108EE9;
+    background: #111210;
 }
 .ex-list .ex-nav.active{
-    background: #108EE9;
+    background: #111210;
+    position: relative;
+}
+.ex-list .ex-nav.active::after{
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: url(./../assets/img/point@3x.png) no-repeat 0 0 / 100% 100%;
+    position: absolute;
+    right: 10px;
+    top: 15px;
 }
 @-webkit-keyframes fadeIn{
     0%{
@@ -147,7 +181,7 @@ export default {
         height: 120px;
     }
     100%{
-        display: none;
+        display: block;
         opacity: 1;
         height: 240px;
     }
@@ -164,7 +198,7 @@ export default {
         height: 120px;
     }
     100%{
-        display: none;
+        display: block;
         opacity: 1;
         height: 240px;
     }
@@ -181,7 +215,7 @@ export default {
         height: 120px;
     }
     100%{
-        display: none;
+        display: block;
         opacity: 1;
         height: 240px;
     }
