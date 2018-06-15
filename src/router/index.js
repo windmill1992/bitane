@@ -17,7 +17,7 @@ Vue.use(Router)
 //   next()
 // })
 const router = new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/m_index',
