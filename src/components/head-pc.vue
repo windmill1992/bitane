@@ -1,5 +1,5 @@
 <template>
-    <div class="head-wrapper">
+    <div class="head-wrapper pc">
         <div class="head">
             <div class="left fl">
                 <div class="logo-box">
@@ -56,53 +56,59 @@ export default {
         document.body.onclick = function() {
             that.showEx = false;
         }
+
+        let w = document.documentElement.clientWidth;
+        if(w < 1400){
+            let pc = document.getElementsByClassName('pc')[0];
+            pc.getElementsByClassName('head')[0].style.width = '1200px';
+        }
     }
 }
 </script>
 
 <style scoped>
 @import url(./../assets/css/base.css);
-.head-wrapper{
+.head-wrapper.pc{
     width: 100%;
     height: 160px;
     background: #108EE9;
 }
-.head{
+.pc .head{
     margin: 0 auto;
     height: 160px;
     min-width: 1200px;
     max-width: 1370px;
 }
-.head .left{
+.pc .head .left{
     height: 60px;
     line-height: 60px;
     margin-right: 100px;
     margin-top: 50px;
     position: relative;
 }
-.head .logo-box{
+.pc .head .logo-box{
     position: relative;
     left: -15px;
     overflow: hidden;
 }
-.head .logo-box img{
+.pc .head .logo-box img{
     width: 60px;
     height: 60px;
     position: relative;
     top: 3px;
 }
-.head .logo-box .logo-txt{
+.pc .head .logo-box .logo-txt{
     color: #fff;
 }
-.head .logo-box .en{
+.pc .head .logo-box .en{
     font-size: 20px;
 }
-.head .nav{
+.pc .head .nav{
     font-size: 18px;
     color: #fff;
     cursor: pointer;
 }
-.head .nav.down::after{
+.pc .head .nav.down::after{
     content: '';
     display: inline-block;
     width: 19px;
@@ -114,13 +120,13 @@ export default {
     -ms-transition: all .4s ease;
     transition: all .4s ease;
 }
-.head .nav.down.up::after{
+.pc .head .nav.down.up::after{
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
 }
-.head .left .on{
+.pc .head .left .on{
     width: 56px;
     height: 3px;
     position: absolute;
@@ -130,20 +136,20 @@ export default {
     transform: translate3d(-50%, 0, 0);
     background: #fff;
 }
-.ex-list{
+.pc .ex-list{
     position: absolute;
     width: 108px;
     left: 0;
     top: 70px;
     display: none;
 }
-.ex-list.show{
+.pc .ex-list.show{
     -webkit-animation: fadeIn .4s ease;
     -moz-animation: fadeIn .4s ease;
     -ms-animation: fadeIn .4s ease;
     animation: fadeIn .4s ease;
 }
-.ex-list .ex-nav{
+.pc .ex-list .ex-nav{
     display: block;
     height: 40px;
     line-height: 40px;
@@ -152,14 +158,14 @@ export default {
     background: #66BFFF;
     text-align: center;
 }
-.ex-list .ex-nav:hover{
+.pc .ex-list .ex-nav:hover{
     background: #111210;
 }
-.ex-list .ex-nav.active{
+.pc .ex-list .ex-nav.active{
     background: #111210;
     position: relative;
 }
-.ex-list .ex-nav.active::after{
+.pc .ex-list .ex-nav.active::after{
     content: '';
     display: inline-block;
     width: 10px;
@@ -171,51 +177,42 @@ export default {
 }
 @-webkit-keyframes fadeIn{
     0%{
-        display: block;
         opacity: 0;
         height: 0;
     }
     50%{
-        display: block;
         opacity: 0.5;
         height: 120px;
     }
     100%{
-        display: block;
         opacity: 1;
         height: 240px;
     }
 }
 @-moz-keyframes fadeIn{
     0%{
-        display: block;
         opacity: 0;
         height: 0;
     }
     50%{
-        display: block;
         opacity: 0.5;
         height: 120px;
     }
     100%{
-        display: block;
         opacity: 1;
         height: 240px;
     }
 }
 @keyframes fadeIn{
     0%{
-        display: block;
         opacity: 0;
         height: 0;
     }
     50%{
-        display: block;
         opacity: 0.5;
         height: 120px;
     }
     100%{
-        display: block;
         opacity: 1;
         height: 240px;
     }

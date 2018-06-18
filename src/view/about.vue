@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <m-head to="about"></m-head>
-      <div class="a-body">
+      <div class="a-body-m">
         <div class="a-wrapper">
             <div class="txt-box">
               <p class="title">About Bitane</p>
@@ -47,10 +47,10 @@ export default {
 </script>
 
 <style>
-#app, .container, .a-body{
+#app, .container, .a-body-m{
     height: 100%;
 }
-.a-body{
+.a-body-m {
   background: #108EE9;
   color: #fff;
   padding-top: .45rem;
@@ -58,21 +58,21 @@ export default {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.a-wrapper{
+.a-body-m .a-wrapper{
   padding: .15rem
 }
-.a-wrapper .txt-box{
+.a-body-m .a-wrapper .txt-box{
   margin-bottom: .4rem;
 }
-.a-wrapper .title{
+.a-body-m .a-wrapper .title{
   font-size: .22rem;
   margin-bottom: .1rem;
 }
-.a-wrapper .txt{
+.a-body-m .a-wrapper .txt{
   font-size: .14rem;
   text-align: justify;
 }
-.a-body .bigtxt{
+.a-body-m .bigtxt{
   width: 100%;
   font-size: 1.25rem;
   color: rgba(63,166,240,0.78);
@@ -82,7 +82,7 @@ export default {
   margin-top: .2rem;
   overflow: hidden;
 }
-.a-body .bigtxt span{
+.a-body-m .bigtxt span{
   position: relative;
   left: -.18rem;
 }

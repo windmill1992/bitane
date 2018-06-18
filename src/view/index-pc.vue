@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <head-pc to="home"></head-pc>
-        <div class="body">
+        <div class="body-pc">
             <p class="txt1">Global Cryptocurrency Price Tracking & Breaking News</p>
             <p class="txt1 txt2">Decentralize Your Mind</p>
             <div class="dl-box">
@@ -44,6 +44,5 @@ export default {
 </script>
 
 <style>
-@import url(./../assets/css/base.css);
 @import url(./../assets/css/index-pc.css);
 </style>

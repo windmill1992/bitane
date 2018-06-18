@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <head-pc to="market" :code="code" class="heads"></head-pc>
-        <div class="m-body" style="width: 1200px;">
+        <div class="m-body-pc" style="width: 1200px;">
             <div class="ex-info">
                 <div class="left fl">
                     <div class="ex-logo fl">
@@ -52,7 +52,7 @@
                 </table>
             </div>
         </div>
-        <a href="javascript:;" class="to-top" id="toTop" @click="scrollToTop"></a>
+        <a href="javascript:;" class="to-top-pc" id="toTop" @click="scrollToTop"></a>
     </div>
 </template>
 
@@ -190,14 +190,17 @@ export default {
         }
 
         document.documentElement.style.fontSize = "100px";
-        document.addEventListener('scroll', function(e){
-            let st = document.documentElement.scrollTop;
-            if(st > 500){
-                document.getElementById('toTop').style.display = 'block';
-            }else{
-                document.getElementById('toTop').style.display = 'none';
-            }
-        }, false);
+        let $top =  document.getElementById('toTop');
+        if($top){
+            document.addEventListener('scroll', function(e){
+                let st = document.documentElement.scrollTop;
+                if(st > 500){
+                   $top.style.display = 'block';
+                }else{
+                    $top.style.display = 'none';
+                }
+            }, false);
+        }
         setInterval(function() {
             this.getList();
         }.bind(this), 60000);
@@ -237,6 +240,5 @@ export default {
 </script>
 
 <style>
-@import url(./../assets/css/base.css);
 @import url(./../assets/css/market-pc.css);
 </style>

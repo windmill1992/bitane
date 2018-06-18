@@ -10,17 +10,17 @@ html, body {
     width: 100%;
     z-index: 10;
 }
-.m-body {
+.m-body-pc {
   margin: 160px auto 0;
 }
 
-.ex-info {
+.m-body-pc .ex-info {
   padding: 24px;
   background: #fff;
   overflow: hidden;
 }
 
-.ex-info .left {
+.m-body-pc .ex-info .left {
   width: 70%;
   color: #111210;
   border-right: 1px solid #ddd;
@@ -30,14 +30,14 @@ html, body {
   box-sizing: border-box;
 }
 
-.ex-info .ex-logo img {
+.m-body-pc .ex-info .ex-logo img {
   width: 136px;
   height: 136px;
   margin-right: 28px;
   vertical-align: top;
 }
 
-.ex-info .info {
+.m-body-pc .ex-info .info {
   height: 136px;
   padding-right: 25px;
   position: relative;
@@ -45,13 +45,13 @@ html, body {
   max-width: 615px;
 }
 
-.ex-info .info .name {
+.m-body-pc .ex-info .info .name {
   font-size: 28px;
   margin-bottom: 5px;
   line-height: 1.2;
 }
 
-.ex-info .info .intro {
+.m-body-pc .ex-info .info .intro {
   font-size: 16px;
   line-height: 24px;
   margin-bottom: 5px;
@@ -63,7 +63,7 @@ html, body {
   text-overflow: ellipsis;
 }
 
-.ex-info .info .link {
+.m-body-pc .ex-info .info .link {
   font-size: 16px;
   position: absolute;
   bottom: 0;
@@ -72,19 +72,19 @@ html, body {
   white-space: nowrap;
 }
 
-.ex-info .info .link a {
+.m-body-pc .ex-info .info .link a {
   color: #128EE9;
 }
 
-.ex-info .info .link a:hover {
+.m-body-pc .ex-info .info .link a:hover {
   text-decoration: underline;
 }
 
-.ex-info .info .link .country {
+.m-body-pc .ex-info .info .link .country {
   padding-left: 40px;
 }
 
-.ex-info .right {
+.m-body-pc .ex-info .right {
   width: 30%;
   height: 136px;
   padding: 30px;
@@ -95,24 +95,24 @@ html, body {
   box-sizing: border-box;
 }
 
-.ex-info .right .top {
+.m-body-pc .ex-info .right .top {
   margin-bottom: 25px;
   overflow: hidden;
 }
 
-.ex-info .right .bot {
+.m-body-pc .ex-info .right .bot {
   overflow: hidden;
   vertical-align: bottom;
   line-height: 1;
   position: relative;
 }
 
-.ex-info .right .p1 {
+.m-body-pc .ex-info .right .p1 {
   font-size: 16px;
   color: #666;
 }
 
-.ex-info .right .rank {
+.m-body-pc .ex-info .right .rank {
   color: #fff;
   font-size: 12px;
   line-height: 1.5;
@@ -122,12 +122,12 @@ html, body {
   margin: 0;
 }
 
-.ex-info .right .price {
+.m-body-pc .ex-info .right .price {
   font-size: 30px;
   color: #111210;
 }
 
-.ex-info .right .us {
+.m-body-pc .ex-info .right .us {
   font-size: 16px;
   color: #666;
   position: absolute;
@@ -135,24 +135,24 @@ html, body {
   bottom: 2px;
 }
 
-.wrapper {
+.m-body-pc .wrapper {
   margin-top: 12px;
   background: #fff;
   padding: 24px;
 }
 
-.wrapper .title {
+.m-body-pc .wrapper .title {
   font-size: 28px;
   color: #108EE8;
   margin-bottom: 20px;
 }
 
-.market {
+.m-body-pc .market {
   width: 100%;
   border-collapse: collapse;
 }
 
-.market th {
+.m-body-pc .market th {
   text-align: left;
   padding-left: 25px;
   background: #f4f4f4;
@@ -162,7 +162,7 @@ html, body {
   line-height: 52px;
 }
 
-.market td {
+.m-body-pc .market td {
   font-size: 18px;
   height: 52px;
   line-height: 52px;
@@ -171,27 +171,27 @@ html, body {
   padding-left: 25px;
 }
 
-.market td.name {
+.m-body-pc .market td.name {
   width: 100px;
   color: #128EE9;
 }
 
-.market td.up {
+.m-body-pc .market td.up {
   color: #00AC1E;
 }
 
-.market td.down {
+.m-body-pc .market td.down {
   color: #C52B18;
 }
 
-.to-top {
+.to-top-pc {
   width: 40px;
   height: 40px;
   position: fixed;
   bottom: 20px;
   left: 50%;
   margin-left: 600px;
-  background: #34a2d6 url(./../img/totop.png) no-repeat center;
+  background: #34a2d6 url(../img/totop.png) no-repeat center;
   background-size: 30px 30px;
   opacity: 0.6;
   display: none;

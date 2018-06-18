@@ -1,17 +1,17 @@
 html, body{
     -webkit-overflow-scrolling: touch;
 }
-#app, .container, .body{
+#app, .container, .body-m{
     height: 100%;
 }
-.body{
+.body-m{
     width: 100%;
     padding-top: .45rem;
-    background: url(./../img/bg_m.png) no-repeat 0 0 / 100% 100%;
+    background: url(../img/bg_m.png) no-repeat 0 0 / 100% 100%;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-.body .logo{
+.body-m .logo{
     width: .85rem;
     height: .85rem;
     position: relative;
@@ -22,23 +22,23 @@ html, body{
     transform: translate3d(-50%, 0, 0);
 }
 
-.body .txt1{
+.body-m .txt1{
     text-align: center;
     color: #fff;
     font-size: .18rem;
     line-height: .3rem;
 }
 
-.body .txt1:first-of-type{
+.body-m .txt1:first-of-type{
     margin-top: .5rem;
 }
 
-.dl-box{
+.body-m .dl-box{
     margin-top: .1rem;
     text-align: center;
 }
 
-.dl-box .dl-a{
+.body-m .dl-box .dl-a{
     display: block;
     width: 1.85rem;
     height: .4rem;

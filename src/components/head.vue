@@ -1,5 +1,5 @@
 <template>
-    <div class="head-wrapper">
+    <div class="head-wrapper h5">
         <div class="head flex spb">
             <div class="item">
                 <div class="box flex">
@@ -60,7 +60,7 @@ export default {
 
 <style>
 @import url(./../assets/css/base.css);
-.head-wrapper{
+.head-wrapper.h5{
     width: 100%;
     height: .45rem;
     background: #108EE9;
@@ -69,7 +69,7 @@ export default {
     left: 0;
     z-index: 99;
 }
-.head{
+.h5 .head{
     margin: 0 auto;
     height: .45rem;
     width: 100%;
@@ -77,23 +77,23 @@ export default {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-.head .item{
+.h5 .head .item{
     width: 33.33%;
     height: .45rem;
     line-height: .45rem;
     position: relative;
 }
-.head .item .box{
+.h5 .head .item .box{
     display: inline-block;
     height: .45rem;
     position: relative;
 }
-.head .nav{
+.h5 .head .nav{
     font-size: .14rem;
     color: #fff;
     cursor: pointer;
 }
-.head .nav.down::after{
+.h5 .head .nav.down::after{
     content: '';
     display: inline-block;
     width: .12rem;
@@ -105,13 +105,13 @@ export default {
     -ms-transition: all .4s ease;
     transition: all .4s ease;
 }
-.head .nav.down.up::after{
+.h5 .head .nav.down.up::after{
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
 }
-.head .item .on{
+.h5 .head .item .on{
     width: 40px;
     height: 4px;
     position: absolute;
@@ -122,7 +122,7 @@ export default {
     background: #fff;
     border-radius: 2px;
 }
-.ex-list{
+.h5 .ex-list{
     position: fixed;
     width: 100%;
     left: 0;
@@ -130,13 +130,13 @@ export default {
     display: none;
     z-index: 99;
 }
-.ex-list.show{
+.h5 .ex-list.show{
     -webkit-animation: fadeIn .4s ease;
     -moz-animation: fadeIn .4s ease;
     -ms-animation: fadeIn .4s ease;
     animation: fadeIn .4s ease;
 }
-.ex-list .ex-nav{
+.h5 .ex-list .ex-nav{
     float: left;
     display: block;
     width: 33.33%;
@@ -149,11 +149,11 @@ export default {
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, .05);
 }
-.ex-list .ex-nav.active{
+.h5 .ex-list .ex-nav.active{
     background: #111210;
     position: relative;
 }
-.ex-list .ex-nav.active::after{
+.h5 .ex-list .ex-nav.active::after{
     content: '';
     display: inline-block;
     width: .1rem;

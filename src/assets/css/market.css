@@ -4,52 +4,52 @@ html, body{
 ::-webkit-scrollbar{
     display: none;
 }
-.body {
+.m-body-m {
     padding: .45rem 15px 0;
     background: #fff;
 }
-.web {
+.m-body-m .web {
     padding: .1rem 0;
     line-height: 1;
     border-bottom: 1px solid #ddd;
 }
-.web img {
+.m-body-m .web img {
     width: .54rem;
     height: .54rem;
     margin-right: .1rem;
     border-radius: 3px;
 }
-.web .cn {
+.m-body-m .web .cn {
     font-size: .18rem;
     color: #000;
     margin-bottom: 10px;
 }
-.web .link {
+.m-body-m .web .link {
     color: #108EE9;
     font-size: .12rem;
 }
-.vol-box {
+.m-body-m .vol-box {
     padding: .15rem 0;
     line-height: 1;
     border-bottom: 1px solid #ddd;
 }
-.vol-box .vol {
+.m-body-m .vol-box .vol {
     height: .5rem;
 }
-.vol-box .txt {
+.m-body-m .vol-box .txt {
     color: #666;
     font-size: .14rem;
 }
-.vol-box .num {
+.m-body-m .vol-box .num {
     font-size: .22rem;
     color: #151419;
 }
-.vol-box .num .us {
+.m-body-m .vol-box .num .us {
     color: #666;
     font-size: .13rem;
     padding-left: .1rem;
 }
-.vol-box .rank {
+.m-body-m .vol-box .rank {
     font-size: .12rem;
     color: #fff;
     line-height: 1.5;
@@ -57,11 +57,11 @@ html, body{
     background: #108EE9;
     border-radius: 2px;
 }
-.vol-box .country {
+.m-body-m .vol-box .country {
     font-size: .13rem;
     color: #666;
 }
-.intro {
+.m-body-m .intro {
     padding: .1rem 0;
     color: #111210;
     font-size: .14rem;
@@ -69,51 +69,51 @@ html, body{
     border-bottom: 1px solid #ddd;
 }
 
-.wrapper .title {
+.m-body-m .wrapper .title {
     font-size: .18rem;
     font-weight: 600;
     color: #111210;
     line-height: 1.5;
     margin-bottom: .05rem;
 }
-.market-list .item {
+.m-body-m .market-list .item {
     padding: .1rem 0;
     line-height: 1;
     border-bottom: 1px solid #ddd;
 }
-.market-list .con{
+.m-body-m .market-list .con{
     width: 40%;
 }
-.market-list .name {
+.m-body-m .market-list .name {
     color: #999;
     font-size: .1rem;
 }
-.market-list .ex {
+.m-body-m .market-list .ex {
     font-size: .15rem;
     color: #3f3f3f;
     margin: 3px 0 5px;
 }
-.market-list .ex span {
+.m-body-m .market-list .ex span {
     color: #999;
     font-size: .12rem;
 }
-.market-list .vol {
+.m-body-m .market-list .vol {
     font-size: .1rem;
     color: #999;
 }
-.market-list .price-box{
+.m-body-m .market-list .price-box{
     width: 33%;
 }
-.market-list .price {
+.m-body-m .market-list .price {
     font-size: .14rem;
     color: #151419;
     margin-bottom: 5px;
 }
-.market-list .cny {
+.m-body-m .market-list .cny {
     font-size: .1rem;
     color: #999;
 }
-.market-list .rate {
+.m-body-m .market-list .rate {
     width: .72rem;
     height: .28rem;
     line-height: .28rem;
@@ -123,19 +123,19 @@ html, body{
     background: #000;
     border-radius: 1px;
 }
-.market-list .rate.up {
+.m-body-m .market-list .rate.up {
     background: #00AC1E;
 }
-.market-list .rate.down {
+.m-body-m .market-list .rate.down {
     background: #C52B18;
 }
-.to-top{
+.to-top-m{
     width: 40px;
     height: 40px;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #34a2d6 url(./../img/totop.png) no-repeat center;
+    background: #34a2d6 url(../img/totop.png) no-repeat center;
     background-size: 30px 30px;
     opacity: 0.6;
     display: none;

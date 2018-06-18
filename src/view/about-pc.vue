@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <head-pc to="about"></head-pc>
-      <div class="a-body">
+      <div class="a-body-pc">
         <div class="a-wrapper">
             <div class="txt-box">
               <p class="title">About Bitane</p>
@@ -39,32 +39,31 @@ export default {
 </script>
 
 <style>
-@import url(./../assets/css/base.css);
 html, body {
     max-width: none;
     font-size: 14px;
     background: #f4f4f4;
 }
-.a-body{
+.a-body-pc {
   background: #108EE9;
   color: #fff;
 }
-.a-wrapper{
+.a-body-pc .a-wrapper{
   width: 935px;
   margin: 0 auto;
 }
-.a-wrapper .txt-box{
+.a-body-pc .a-wrapper .txt-box{
   margin-bottom: 50px;
 }
-.a-wrapper .title{
+.a-body-pc .a-wrapper .title{
   font-size: 40px;
   margin-bottom: 10px;
 }
-.a-wrapper .txt{
+.a-body-pc .a-wrapper .txt{
   font-size: 24px;
   text-align: justify;
 }
-.a-body .bigtxt{
+.a-body-pc .bigtxt{
   width: 1000px;
   font-size: 288px;
   color: rgba(63,166,240,0.78);
@@ -74,7 +73,7 @@ html, body {
   margin-top: 50px;
   overflow: hidden;
 }
-.a-body .bigtxt span{
+.a-body-pc .bigtxt span{
   position: relative;
   top: 70px;
 }

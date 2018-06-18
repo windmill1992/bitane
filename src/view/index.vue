@@ -1,7 +1,7 @@
 <template>
     <div class="container">
          <m-head to="home"></m-head>
-        <div class="body">
+        <div class="body-m">
             <img src="./../assets/img/logo_m.png" class="logo">
             <p class="txt1">Global Cryptocurrency</p>
             <p class="txt1">Price Tracking & Breaking News
@@ -58,6 +58,5 @@ export default {
 </script>
 
 <style>
-@import url(./../assets/css/base.css);
 @import url(./../assets/css/index.css);
 </style>

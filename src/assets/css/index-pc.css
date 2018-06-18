@@ -4,31 +4,31 @@ html, body {
     background: #f4f4f4;
 }
 
-.body {
+.body-pc {
     margin: 0 auto;
     height: 100%;
     text-align: center;
     color: #fff;
     padding-top: 30px;
-    background: url(./../img/bg@2x.png) no-repeat 0 0 / 100% 100%;
+    background: url(../img/bg@2x.png) no-repeat 0 0 / 100% 100%;
 }
 
-.txt1 {
+.body-pc .txt1 {
     font-size: 42px;
     line-height: 65px;
     font-family: 'PingFang-SC-Medium';
 }
 
-.txt2 {
+.body-pc .txt2 {
     margin-top: 20px;
 }
 
-.dl-box {
+.body-pc .dl-box {
     margin: 60px auto;
     overflow: hidden;
 }
 
-.dl-box .dl-a {
+.body-pc .dl-box .dl-a {
     display: inline-block;
     width: 230px;
     height: 60px;
@@ -40,10 +40,10 @@ html, body {
     border: 2px solid #fff;
 }
 
-.dl-box .dl-a:first-child {
+.body-pc .dl-box .dl-a:first-child {
     margin-right: 90px;
 }
 
-.mobile {
+.body-pc .mobile {
     width: 748px;
 }

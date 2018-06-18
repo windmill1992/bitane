@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <m-head to="market" :code="code"></m-head>
-        <div class="body">
+        <div class="m-body-m">
             <div class="web flex">
                 <img :src="logos[code]" alt="logo">
                 <div class="txt fcol spc">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <a href="javascript:;" class="to-top" id="toTop" @click="scrollToTop"></a>
+        <a href="javascript:;" class="to-top-m" id="toTop" @click="scrollToTop"></a>
     </div>
 </template>
 
@@ -189,14 +189,18 @@ export default {
         document.documentElement.style.fontSize =
             document.documentElement.clientWidth / 375 * 100 + "px";
         };
-        document.addEventListener('scroll', function(e){
-            let st = document.documentElement.scrollTop;
-            if(st > 500){
-                document.getElementById('toTop').style.display = 'block';
-            }else{
-                document.getElementById('toTop').style.display = 'none';
-            }
-        }, false);
+
+        let $top =  document.getElementById('toTop');
+        if($top){
+            document.addEventListener('scroll', function(e){
+                let st = document.documentElement.scrollTop;
+                if(st > 500){
+                   $top.style.display = 'block';
+                }else{
+                    $top.style.display = 'none';
+                }
+            }, false);
+        }
         setInterval(function() {
             this.getList();
         }.bind(this), 60000);
@@ -236,6 +240,5 @@ export default {
 </script>
 
 <style>
-@import url(./../assets/css/base.css);
 @import url(./../assets/css/market.css);
 </style>
