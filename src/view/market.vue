@@ -158,11 +158,13 @@ export default {
             let obj = this.$route.params;
             this.code = obj.code;
             if(obj.title){
+                this.title = obj.title;
                 setTitle(obj.title);
                 sessionStorage.setItem('title', obj.title);
             }else{
                 let t = sessionStorage.getItem('title')
                 if(t){
+                    this.title = t;
                     setTitle(t);
                 }
             }
