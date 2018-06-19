@@ -38,6 +38,11 @@ export default {
     },
     mounted() {
         let ww = document.documentElement.clientWidth;
+        let hh = document.documentElement.clientHeight;
+        if(hh < ww * 1.5 && ww < 768){
+            let $el = document.getElementsByClassName('body-m')[0];
+            $el.getElementsByClassName('dl-box')[0].style.bottom = '.4rem';
+        }
         ww = ww >= 768 ? ww / 2 : ww;
         document.documentElement.style.fontSize = ww / 375 * 100 + "px";
         window.onresize = function() {
