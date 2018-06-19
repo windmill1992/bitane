@@ -1,6 +1,8 @@
-html, body{
-    -webkit-overflow-scrolling: touch;
+.container{
+    font-size: .14rem;
+    height: 100%;
 }
+
 ::-webkit-scrollbar{
     display: none;
 }
@@ -139,4 +141,5 @@ html, body{
     background-size: 30px 30px;
     opacity: 0.6;
     display: none;
+    z-index: 999;
 }

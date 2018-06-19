@@ -121,24 +121,12 @@ export default {
             })
         },
         scrollToTop() {
-            let st = document.documentElement.scrollTop;
+            let st = window.scrollY;
             if (st > 0) {
                 window.requestAnimationFrame(this.scrollToTop);
                 window.scrollTo(0, st - (st / 5));
             }
         },
-    },
-    computed: {
-        appLink() {
-            var u = navigator.userAgent;
-            if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
-                return 'http://a.app.qq.com/o/simple.jsp?pkgname=com.ytkj.bitan&fromcase=40002';
-            }else if(u.indexOf('iPhone') > -1){
-                return 'https://itunes.apple.com/us/app/%E5%B8%81%E6%8E%A2/id1335517724?l=zh&ls=1&mt=8';
-            }else{
-                return '';
-            }
-        }
     },
     filters: {
         numFmt: function(num) {
@@ -183,29 +171,30 @@ export default {
         this.getExInfo();
         this.getList();
 
-        document.documentElement.style.fontSize =
-        document.documentElement.clientWidth / 375 * 100 + "px";
+        let ww = document.documentElement.clientWidth;
+        ww = ww >= 768 ? ww / 2 : ww;
+        document.documentElement.style.fontSize = ww / 375 * 100 + "px";
         window.onresize = function() {
-        document.documentElement.style.fontSize =
-            document.documentElement.clientWidth / 375 * 100 + "px";
+            document.documentElement.style.fontSize = ww / 375 * 100 + "px";
         };
 
         let $top =  document.getElementById('toTop');
         if($top){
-            document.addEventListener('scroll', function(e){
-                let st = document.documentElement.scrollTop;
+            let _this = this;
+            window.addEventListener('scroll', function(e){
+                let st = window.scrollY;
                 if(st > 500){
-                   $top.style.display = 'block';
+                    $top.style.display = 'block';
                 }else{
                     $top.style.display = 'none';
                 }
-            }, false);
+            }, true);
         }
         setInterval(function() {
             this.getList();
         }.bind(this), 60000);
         
-        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
         if(isMobile){
            
         }else{
@@ -240,5 +229,9 @@ export default {
 </script>
 
 <style>
+@import url(./../assets/css/base.css);
+</style>
+
+<style scoped>
 @import url(./../assets/css/market.css);
 </style>

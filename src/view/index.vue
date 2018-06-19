@@ -10,6 +10,7 @@
                 <a href="https://itunes.apple.com/us/app/%E5%B8%81%E6%8E%A2/id1335517724?l=zh&ls=1&mt=8" class="dl-a">iOS Download</a>
                 <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ytkj.bitan&fromcase=40002" class="dl-a">Android Download</a>
             </div>
+            <p class="bigtxt"><span>Bitane</span></p>
         </div>
     </div>
 </template>
@@ -21,10 +22,7 @@ export default {
     data() {
         return {
             
-        };
-    },
-    methods: {
-        
+        }
     },
     computed: {
         appLink() {
@@ -39,13 +37,13 @@ export default {
         }
     },
     mounted() {
-        document.documentElement.style.fontSize =
-        document.documentElement.clientWidth / 375 * 100 + "px";
+        let ww = document.documentElement.clientWidth;
+        ww = ww >= 768 ? ww / 2 : ww;
+        document.documentElement.style.fontSize = ww / 375 * 100 + "px";
         window.onresize = function() {
-        document.documentElement.style.fontSize =
-            document.documentElement.clientWidth / 375 * 100 + "px";
+            document.documentElement.style.fontSize = ww / 375 * 100 + "px";
         };
-        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
         if(isMobile){
            
         }else{
@@ -58,5 +56,9 @@ export default {
 </script>
 
 <style>
+@import url(./../assets/css/base.css);
+</style>
+
+<style scoped>
 @import url(./../assets/css/index.css);
 </style>

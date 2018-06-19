@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted() {
-    let isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+    let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
     if(isMobile){
         this.$router.push({ path: '/m_about' });
         window.location.reload();
@@ -39,8 +39,11 @@ export default {
 </script>
 
 <style>
-html, body {
-    max-width: none;
+@import url(./../assets/css/base.css);
+</style>
+
+<style scoped>
+.container {
     font-size: 14px;
     background: #f4f4f4;
 }

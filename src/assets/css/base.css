@@ -152,11 +152,13 @@ input::-webkit-input-placeholder{
 .c999{
 	color: #999;
 }
-html, body {
+html, body, #app {
 	height: 100%;
-	max-width: 768px;
-	font-size: .14rem;
 	line-height: 1.5;
 	min-height: 100%;
 	margin: 0 auto;
+	-webkit-overflow-scrolling: touch;
+}
+.mint-indicator{
+	font-size: 14px;
 }

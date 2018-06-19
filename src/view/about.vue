@@ -26,13 +26,13 @@ export default {
     }
   },
   mounted() {
-    document.documentElement.style.fontSize =
-    document.documentElement.clientWidth / 375 * 100 + "px";
+    let ww = document.documentElement.clientWidth;
+    ww = ww >= 768 ? ww / 2 : ww;
+    document.documentElement.style.fontSize = ww / 375 * 100 + "px";
     window.onresize = function() {
-    document.documentElement.style.fontSize =
-        document.documentElement.clientWidth / 375 * 100 + "px";
+        document.documentElement.style.fontSize = ww / 375 * 100 + "px";
     };
-    let isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+    let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
     if(isMobile){
 
     }else{
@@ -47,8 +47,13 @@ export default {
 </script>
 
 <style>
-#app, .container, .a-body-m{
+@import url(./../assets/css/base.css);
+</style>
+
+<style scoped>
+.container, .a-body-m{
     height: 100%;
+    font-size: .14rem;
 }
 .a-body-m {
   background: #108EE9;
@@ -57,6 +62,7 @@ export default {
   overflow: hidden;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  position: relative;
 }
 .a-body-m .a-wrapper{
   padding: .15rem
@@ -77,10 +83,11 @@ export default {
   font-size: 1.25rem;
   color: rgba(63,166,240,0.78);
   letter-spacing: .1rem;
-  margin: 0 auto;
   line-height: 1;
-  margin-top: .2rem;
   overflow: hidden;
+  position: absolute;
+  bottom: -.3rem;
+  left: 0;
 }
 .a-body-m .bigtxt span{
   position: relative;

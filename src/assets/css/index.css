@@ -1,15 +1,15 @@
-html, body{
-    -webkit-overflow-scrolling: touch;
-}
-#app, .container, .body-m{
+.container, .body-m{
     height: 100%;
+    font-size: .14rem;
 }
 .body-m{
     width: 100%;
     padding-top: .45rem;
-    background: url(../img/bg_m.png) no-repeat 0 0 / 100% 100%;
+    background: #108EE9 url(../img/bg_m.png) no-repeat 0 0 / 100%;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
 .body-m .logo{
     width: .85rem;
@@ -49,4 +49,21 @@ html, body{
     font-size: .14rem;
     border-radius: .4rem;
     margin: .5rem auto 0;
+}
+
+.body-m .bigtxt{
+    width: 100%;
+    font-size: 1.25rem;
+    color: rgba(63,166,240,0.78);
+    letter-spacing: .1rem;
+    text-align: center;
+    line-height: 1;
+    overflow: hidden;
+    position: absolute;
+    bottom: -.3rem;
+    left: 0;
+  }
+.body-m .bigtxt span{
+    position: relative;
+    left: -.18rem;
 }

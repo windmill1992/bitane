@@ -205,7 +205,7 @@ export default {
             this.getList();
         }.bind(this), 60000);
 
-        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
         if(isMobile){
             this.$router.push({ path: '/m_market/'+ this.code });
             window.location.reload();
@@ -238,6 +238,10 @@ export default {
     }
 }
 </script>
+
+<style>
+@import url(./../assets/css/base.css);
+</style>
 
 <style>
 @import url(./../assets/css/market-pc.css);

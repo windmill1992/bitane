@@ -67,7 +67,6 @@ export default {
 </script>
 
 <style scoped>
-@import url(./../assets/css/base.css);
 .head-wrapper.pc{
     width: 100%;
     height: 160px;

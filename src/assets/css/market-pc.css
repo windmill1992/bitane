@@ -1,5 +1,4 @@
-html, body {
-  max-width: none;
+.container {
   font-size: 14px;
   background: #f4f4f4;
 }

@@ -3,7 +3,7 @@
         <div class="head flex spb">
             <div class="item">
                 <div class="box flex">
-                    <router-link :to="{ path: '/index' }" class="nav">HOME</router-link>
+                    <router-link :to="{ path: '/m_index' }" class="nav">HOME</router-link>
                     <div :class="{ on: (to == 'home') }"></div>
                 </div>
             </div>
@@ -58,8 +58,7 @@ export default {
 }
 </script>
 
-<style>
-@import url(./../assets/css/base.css);
+<style scoped>
 .head-wrapper.h5{
     width: 100%;
     height: .45rem;

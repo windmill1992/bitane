@@ -31,7 +31,7 @@ export default {
         }
     },
     mounted() {
-        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
         if(isMobile){
             this.$router.push({ path: '/m_index' });
             window.location.reload();
@@ -42,7 +42,10 @@ export default {
     }
 }
 </script>
-
 <style>
+@import url(./../assets/css/base.css);
+</style>
+
+<style scoped>
 @import url(./../assets/css/index-pc.css);
 </style>
