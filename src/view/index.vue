@@ -50,7 +50,12 @@ export default {
         };
         let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
         if(isMobile){
-           
+            let _this = this;
+            window.onresize = function(){
+                if(_this.$router.path.indexOf('market') == -1){
+                    window.location.reload();
+                }
+           }
         }else{
             this.$router.push({ path: '/index' });
             window.location.reload();
