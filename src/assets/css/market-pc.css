@@ -20,7 +20,7 @@
 }
 
 .m-body-pc .ex-info .left {
-  width: 70%;
+  width: 75%;
   color: #111210;
   border-right: 1px solid #ddd;
   -webkit-box-sizing: border-box;
@@ -37,11 +37,12 @@
 }
 
 .m-body-pc .ex-info .info {
-  height: 136px;
+  /* height: 136px; */
   padding-right: 25px;
   position: relative;
   word-break: break-all;
-  max-width: 615px;
+  max-width: 635px;
+  padding-bottom: 30px;
 }
 
 .m-body-pc .ex-info .info .name {
@@ -51,7 +52,7 @@
 }
 
 .m-body-pc .ex-info .info .intro {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   margin-bottom: 5px;
   display: -webkit-box;
@@ -60,6 +61,7 @@
   line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
 }
 
 .m-body-pc .ex-info .info .link {
@@ -84,7 +86,7 @@
 }
 
 .m-body-pc .ex-info .right {
-  width: 30%;
+  width: 25%;
   height: 136px;
   padding: 30px;
   overflow: hidden;
@@ -171,8 +173,9 @@
 }
 
 .m-body-pc .market td.name {
-  width: 100px;
+  min-width: 150px;
   color: #128EE9;
+  white-space: nowrap;
 }
 
 .m-body-pc .market td.up {

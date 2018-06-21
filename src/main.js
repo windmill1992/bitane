@@ -9,7 +9,7 @@ import axios from 'axios'
 Vue.use(Mint)
 
 axios.defaults.headers = {
-  'lang': 'cn', 
+  'lang': 'en', 
   'content-type': 'application/json',
   'legalTende': 1,
   'applicationId': 2,
