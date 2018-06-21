@@ -45,4 +45,6 @@
 
 .body-pc .mobile {
     width: 748px;
+    position: relative;
+    left: 8px;
 }

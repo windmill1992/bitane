@@ -91,6 +91,7 @@ export default {
     font-size: .14rem;
     color: #fff;
     cursor: pointer;
+    position: relative;
 }
 .h5 .head .nav.down::after{
     content: '';
@@ -98,11 +99,13 @@ export default {
     width: .12rem;
     height: .063rem;
     background: url(./../assets/img/down@3x.png) no-repeat 0 0 / 100% 100%;
-    margin-left: 10px;
     -webkit-transition: all .4s ease;
     -moz-transition: all .4s ease;
     -ms-transition: all .4s ease;
     transition: all .4s ease;
+    position: absolute;
+    right: -.2rem;
+    top: .2rem;
 }
 .h5 .head .nav.down.up::after{
     -webkit-transform: rotate(180deg);

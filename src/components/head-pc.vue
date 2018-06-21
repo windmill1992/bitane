@@ -106,6 +106,7 @@ export default {
     font-size: 18px;
     color: #fff;
     cursor: pointer;
+    position: relative;
 }
 .pc .head .nav.down::after{
     content: '';
@@ -113,11 +114,13 @@ export default {
     width: 19px;
     height: 10px;
     background: url(./../assets/img/down@3x.png) no-repeat 0 0 / 100% 100%;
-    margin-left: 10px;
     -webkit-transition: all .4s ease;
     -moz-transition: all .4s ease;
     -ms-transition: all .4s ease;
     transition: all .4s ease;
+    position: absolute;
+    right: -25px;
+    top: 25px;
 }
 .pc .head .nav.down.up::after{
     -webkit-transform: rotate(180deg);
