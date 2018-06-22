@@ -85,11 +85,11 @@
 
 .m-body-m .intro p {
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
 .m-body-m .intro .all {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
   -webkit-line-clamp: 7;
   line-clamp: 7;
 }
