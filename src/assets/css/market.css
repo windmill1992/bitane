@@ -87,6 +87,8 @@
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
 }
 
 .m-body-m .intro .all {
