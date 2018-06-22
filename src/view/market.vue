@@ -60,7 +60,7 @@ export default {
             title: '',
             list: [],
             bitInfo: {},
-            lookTxt: 'lookAll',
+            lookTxt: 'LookAll',
             showAll: false,
             logos: {
                 'huobi.pro': './../../static/img/huobi.png',
@@ -137,12 +137,12 @@ export default {
         },
         lookAll() {
             let $p = document.getElementById('intro');
-            if(this.lookTxt == 'lookAll'){
+            if(this.lookTxt == 'LookAll'){
                 $p.classList.remove('all');
-                this.lookTxt = 'takeUp';
+                this.lookTxt = 'TakeUp';
             }else{
                 $p.classList.add('all');
-                this.lookTxt = 'lookAll';
+                this.lookTxt = 'LookAll';
             }
         },
         scrollToTop() {
