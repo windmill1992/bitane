@@ -12,7 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'https://bitane.muzhao888.com/', //'http://115.231.223.139:8763/',
+        // target: 'https://bitane.muzhao888.com/',
+        target: 'http://api.bitane.io/',
         changeOrigin: true,
         secure: true,
         pathRewrite: {

@@ -9,41 +9,38 @@
                     </div>
                     <div class="info fl">
                         <p class="name">{{title}}({{code | capitalize}})</p>
-                        <p class="intro">{{bitInfo.exchangeAbstract}}</p>
+                        <p class="intro" id="intro">{{bitInfo.exchangeAbstract}}</p>
                         <p class="link">
-                            <span>官网地址：</span>
+                            <span>Official Web Address：</span>
                             <a :href="bitInfo.exchangeWebsiteAddress">{{bitInfo.exchangeWebsiteAddress}}</a>
-                            <span class="country">国家：{{bitInfo.countryName}}</span>
+                            <span class="country">Country：{{bitInfo.countryName}}</span>
                         </p>
+                        <a href="javascript:;" id="showmore" class="look" v-if="showAll" @click="lookAll">{{lookTxt}}</a>
                     </div>
                 </div>
                 <div class="right fl">
-                    <div class="top">
-                        <p class="p1 fl">24H成交额：</p>
-                        <p class="rank fr">排名:NO{{bitInfo.ranking}}</p>
-                    </div>
-                    <div class="bot">
-                        <p class="price">¥{{bitInfo.turnoverCNY | numFmt}}</p>
-                        <p class="us">约${{bitInfo.turnoverUSD | numFmt}}</p>
-                    </div>
+                    <p class="rank">Ranking:NO{{bitInfo.ranking}}</p>
+                    <p class="p1">24H AMOUNT</p>
+                    <p class="price">¥{{bitInfo.turnoverCNY | numFmt}}</p>
+                    <p><span class="us">(≈${{bitInfo.turnoverUSD | numFmt}})</span></p>
                 </div>
             </div>
             <div class="wrapper">
-                <div class="title">行情</div>
+                <div class="title">Market</div>
                 <table class="market">
                     <tr>
-                        <th>名称</th>
-                        <th>交易对</th>
-                        <th>价格</th>
-                        <th>成交量</th>
-                        <th>成交额</th>
-                        <th>涨跌幅</th>
+                        <th>Name</th>
+                        <th>Transaction</th>
+                        <th>Price</th>
+                        <th>Volume</th>
+                        <th>Amount</th>
+                        <th>Rise&Fall</th>
                     </tr>
                     <tr v-for="item in list" :key="item.kindCode">
                         <td class="name">{{item.kindName != '' ? item.kindName : item.kindCode.split('/')[0]}}</td>
                         <td>{{item.kindCode}}</td>
                         <td>￥{{item.legalTendeCNY | numFmt}}</td>
-                        <td>{{item.volume | numFmt}}{{item.kindCode.split('/')[1]}}</td>
+                        <td>{{item.volume | numFmt}} {{item.kindCode.split('/')[1]}}</td>
                         <td>{{item.turnover | numFmt}}</td>
                         <td class="up" v-if="item.rose > 0">+{{item.rose | numFmt2}}</td>
                         <td v-if="item.rose == 0">0.0</td>
@@ -69,6 +66,8 @@ export default {
             bitInfo: {},
             code: '',
             title: '',
+            lookTxt: 'lookAll',
+            showAll: false,
             logos: {
                 'huobi.pro': './../../static/img/huobi.png',
                 'okex': './../../static/img/okex.png',
@@ -116,6 +115,18 @@ export default {
             .then(res => {
                 if(res.data.code == 0){
                     this.bitInfo = res.data.data;
+                    let $p = document.getElementById('intro');
+                    $p.classList.remove('all');
+                    setTimeout(() => {
+                        let h = $p.offsetHeight;
+                        if(h > 75){
+                            this.showAll = true;
+                            $p.classList.add('all');
+                            $p.parentElement.style.height = 'auto';
+                        }else{
+                            this.showAll = false;
+                        }
+                    }, 30);
                 }else{
                     Toast({
                         message: res.data.resultMsg,
@@ -129,6 +140,16 @@ export default {
                     position: 'bottom'
                 })
             })
+        },
+        lookAll() {
+            let $p = document.getElementById('intro');
+            if(this.lookTxt == 'lookAll'){
+                $p.classList.remove('all');
+                this.lookTxt = 'takeUp';
+            }else{
+                $p.classList.add('all');
+                this.lookTxt = 'lookAll';
+            }
         },
         scrollToTop() {
             let st = document.documentElement.scrollTop;
@@ -150,14 +171,17 @@ export default {
                 return 0;
             }else if(num < 1){
                 return parseFloat(parseFloat(num).toFixed(8));
-            }else if(num < 10000){
+            }else if(num < 1000){
                 return parseFloat(parseFloat(num).toFixed(2));
-            }else if(num < 100000000){
-                num = num / 10000;
-                return parseFloat(parseFloat(num).toFixed(2)) + '万';
+            }else if(num < 1000000){
+                num = num / 1000;
+                return parseFloat(parseFloat(num).toFixed(2)) + 'k';
+            }else if(num < 1000000000){
+                num = num / 1000000;
+                return parseFloat(parseFloat(num).toFixed(2)) + 'Mn';
             }else{
-                num = num / 100000000;
-                return parseFloat(parseFloat(num).toFixed(2)) + '亿';
+                num = num / 1000000000;
+                return parseFloat(parseFloat(num).toFixed(2)) + 'Bn';
             }
         },
         numFmt2: function(num) {
