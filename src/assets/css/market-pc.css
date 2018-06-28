@@ -1,5 +1,6 @@
 .container {
   font-size: 14px;
+  min-height: 1200px;
   background: #f4f4f4;
 }
 .heads{
