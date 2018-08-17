@@ -224,9 +224,9 @@ export default {
             this.getList();
         }.bind(this), 60000);
         
-        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
+        let isMobile = /Android|WebOS|iPhone|iPod|BlackBerry|iPad|pad|pod|phone|ios|Mobile|IEMobile|MQQBrowser|BrowserNG|Symbian/i.test(navigator.userAgent);
         if(isMobile){
-           
+           document.getElementById('app').style.minWidth = 'none';
         }else{
             this.$router.push({ path: '/market/'+ this.code });
             window.location.reload();
@@ -257,10 +257,6 @@ export default {
     components: { 'm-head': head }
 }
 </script>
-
-<style>
-@import url(./../assets/css/base.css);
-</style>
 
 <style scoped>
 @import url(./../assets/css/market.css);

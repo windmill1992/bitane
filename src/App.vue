@@ -10,6 +10,11 @@ export default {
 }
 </script>
 
+
+<style>
+@import url(./assets/css/base.css);
+</style>
+
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

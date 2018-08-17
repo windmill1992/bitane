@@ -30,6 +30,8 @@ export default {
     if(isMobile){
         this.$router.push({ path: '/m_about' });
         window.location.reload();
+    }else{
+      document.getElementById('app').style.minWidth = '768px';
     }
   },
   components: {
@@ -37,10 +39,6 @@ export default {
   }
 }
 </script>
-
-<style>
-@import url(./../assets/css/base.css);
-</style>
 
 <style scoped>
 .container {

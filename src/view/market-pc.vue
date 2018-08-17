@@ -198,7 +198,10 @@ export default {
         if(isMobile){
             this.$router.push({ path: '/m_market/'+ this.code });
             window.location.reload();
+        }else{
+            document.getElementById('app').style.minWidth = '768px';
         }
+        
         if(this.$route.params){
             let obj = this.$route.params;
             this.code = obj.code;
@@ -262,10 +265,6 @@ export default {
     }
 }
 </script>
-
-<style>
-@import url(./../assets/css/base.css);
-</style>
 
 <style>
 @import url(./../assets/css/market-pc.css);

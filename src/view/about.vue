@@ -32,9 +32,9 @@ export default {
     window.onresize = function() {
         document.documentElement.style.fontSize = ww / 375 * 100 + "px";
     };
-    let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
+    let isMobile = /Android|WebOS|iPhone|iPod|BlackBerry|iPad|pad|pod|phone|ios|Mobile|IEMobile|MQQBrowser|BrowserNG|Symbian/i.test(navigator.userAgent);
     if(isMobile){
-
+      document.getElementById('app').style.minWidth = 'none';
     }else{
         this.$router.push({ path: '/about' });
         window.location.reload();
@@ -45,10 +45,6 @@ export default {
   }
 }
 </script>
-
-<style>
-@import url(./../assets/css/base.css);
-</style>
 
 <style scoped>
 .container, .a-body-m{

@@ -48,9 +48,10 @@ export default {
         window.onresize = function() {
             document.documentElement.style.fontSize = ww / 375 * 100 + "px";
         };
-        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
+        let isMobile = /Android|WebOS|iPhone|iPod|BlackBerry|iPad|pad|pod|phone|ios|Mobile|IEMobile|MQQBrowser|BrowserNG|Symbian/i.test(navigator.userAgent);
         if(isMobile){
             let _this = this;
+            document.getElementById('app').style.minWidth = 'none';
             window.onresize = function(){
                 if(_this.$router.path.indexOf('market') == -1){
                     window.location.reload();
@@ -64,10 +65,6 @@ export default {
     components: { 'm-head': head }
 }
 </script>
-
-<style>
-@import url(./../assets/css/base.css);
-</style>
 
 <style scoped>
 @import url(./../assets/css/index.css);

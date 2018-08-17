@@ -35,6 +35,8 @@ export default {
         if(isMobile){
             this.$router.push({ path: '/m_index' });
             window.location.reload();
+        }else{
+            document.getElementById('app').style.minWidth = '768px';
         }
     },
     components: {
@@ -42,9 +44,6 @@ export default {
     }
 }
 </script>
-<style>
-@import url(./../assets/css/base.css);
-</style>
 
 <style scoped>
 @import url(./../assets/css/index-pc.css);
