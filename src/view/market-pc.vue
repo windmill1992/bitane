@@ -194,6 +194,11 @@ export default {
         }
     },
     mounted() {
+        let isMobile = /Android|WebOS|iPhone|iPod|BlackBerry|iPad|pad|pod|phone|ios|Mobile|IEMobile|MQQBrowser|BrowserNG|Symbian/i.test(navigator.userAgent);
+        if(isMobile){
+            this.$router.push({ path: '/m_market/'+ this.code });
+            window.location.reload();
+        }
         if(this.$route.params){
             let obj = this.$route.params;
             this.code = obj.code;
@@ -229,11 +234,6 @@ export default {
             this.getList();
         }.bind(this), 60000);
 
-        let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
-        if(isMobile){
-            this.$router.push({ path: '/m_market/'+ this.code });
-            window.location.reload();
-        }
     },
     watch: {
         $route (to, from) {

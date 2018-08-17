@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted() {
-    let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent);
+    let isMobile = /Android|WebOS|iPhone|iPod|BlackBerry|iPad|pad|pod|phone|ios|Mobile|IEMobile|MQQBrowser|BrowserNG|Symbian/i.test(navigator.userAgent);
     if(isMobile){
         this.$router.push({ path: '/m_about' });
         window.location.reload();
