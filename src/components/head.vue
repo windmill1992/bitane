@@ -1,12 +1,6 @@
 <template>
     <div class="head-wrapper h5">
         <div class="head flex spb">
-            <div class="item">
-                <div class="box flex">
-                    <router-link :to="{ path: '/m_index' }" class="nav">HOME</router-link>
-                    <div :class="{ on: (to == 'home') }"></div>
-                </div>
-            </div>
             <div class="item flex spc">
                 <div class="box">
                     <div class="nav down flex fcen" :class="{ up: showEx }" @click.prevent.stop="showExchange">MARKET</div>
@@ -19,6 +13,12 @@
                     <router-link :to="{ name: 'Market', params: { code: 'bitfinex', title: 'Bitfinex' } }" class="ex-nav" :class="{active: code == 'bitfinex'}">Bitfinex</router-link>
                     <router-link :to="{ name: 'Market', params: { code: 'bittrex', title: 'Bittrex' } }" class="ex-nav" :class="{active: code == 'bittrex'}">Bittrex</router-link>
                     <router-link :to="{ name: 'Market', params: { code: 'bitstamp', title: 'Bitstamp' } }" class="ex-nav" :class="{active: code == 'bitstamp'}">Bitstamp</router-link>
+                </div>
+            </div>
+            <div class="item">
+                <div class="box flex">
+                    <router-link :to="{ path: '/m_index' }" class="nav">DOWNLOAD</router-link>
+                    <div :class="{ on: (to == 'download') }"></div>
                 </div>
             </div>
             <div class="item flex fend">

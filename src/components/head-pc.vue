@@ -10,13 +10,10 @@
                 </div>
             </div>
             <div class="left fl">
-                <router-link :to="{ path: '/index' }" class="nav">HOME</router-link>
-                <div :class="{ on: (to == 'home') }"></div>
-            </div>
-            <div class="left fl">
                 <div class="nav down" :class="{ up: showEx }" @click.prevent.stop="showExchange" @mouseenter="showExchange">MARKET</div>
                 <div :class="{ on: (to == 'market') }"></div>
                 <div class="ex-list" :class="{show: showEx}" @mouseleave="hideExchange">
+                    <router-link :to="{ name: 'MarketPc', params: { code: '', title: '币探全网' } }" class="ex-nav" :class="{active: code == ''}">全网</router-link>
                     <router-link :to="{ name: 'MarketPc', params: { code: 'huobi.pro', title: '火币Pro' } }" class="ex-nav" :class="{active: code == 'huobi.pro'}">火币PRO</router-link>
                     <router-link :to="{ name: 'MarketPc', params: { code: 'okex', title: 'OKEx' } }" class="ex-nav" :class="{active: code == 'okex'}">OKEX</router-link>
                     <router-link :to="{ name: 'MarketPc', params: { code: 'binance', title: '币安网' } }" class="ex-nav" :class="{active: code == 'binance'}">币安网</router-link>
@@ -24,6 +21,10 @@
                     <router-link :to="{ name: 'MarketPc', params: { code: 'bittrex', title: 'Bittrex' } }" class="ex-nav" :class="{active: code == 'bittrex'}">Bittrex</router-link>
                     <router-link :to="{ name: 'MarketPc', params: { code: 'bitstamp', title: 'Bitstamp' } }" class="ex-nav" :class="{active: code == 'bitstamp'}">Bitstamp</router-link>
                 </div>
+            </div>
+            <div class="left fl">
+                <router-link :to="{ path: '/index' }" class="nav">DOWNLOAD</router-link>
+                <div :class="{ on: (to == 'download') }"></div>
             </div>
             <div class="left fl">
                 <router-link :to="{ path: '/about' }" class="nav">ABOUT US</router-link>

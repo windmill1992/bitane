@@ -12,10 +12,6 @@ import AboutPc from './../view/about-pc.vue'
 
 Vue.use(Router)
 
-// Router.beforeEach((to, from, next) => {
-//   window.document.title = to.meta.title;
-//   next()
-// })
 const router = new Router({
   // mode: 'history',
   routes: [
@@ -60,6 +56,14 @@ const router = new Router({
       }
     },
     {
+      path: '/',
+      name: 'MarketPcIndex',
+      component: MarketPc,
+      meta: {
+        title: '交易平台实时行情-币探'
+      }
+    },
+    {
       path: '/about',
       name: 'AboutPc',
       component: AboutPc,
@@ -75,10 +79,6 @@ const router = new Router({
       meta: {
         title: '404'
       },
-    },
-    {
-      path: '/',
-      redirect: { path: '/index' }
     },
     {
       path: '*',

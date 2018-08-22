@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <head-pc to="home"></head-pc>
+        <head-pc to="download"></head-pc>
         <div class="body-pc">
             <p class="txt1">Global Cryptocurrency Price Tracking & Breaking News</p>
             <p class="txt1 txt2">Decentralize Your Mind</p>

@@ -194,14 +194,6 @@ export default {
         }
     },
     mounted() {
-        let isMobile = /Android|WebOS|iPhone|iPod|BlackBerry|iPad|pad|pod|phone|ios|Mobile|IEMobile|MQQBrowser|BrowserNG|Symbian/i.test(navigator.userAgent);
-        if(isMobile){
-            this.$router.push({ path: '/m_market/'+ this.code });
-            window.location.reload();
-        }else{
-            document.getElementById('app').style.minWidth = '768px';
-        }
-        
         if(this.$route.params){
             let obj = this.$route.params;
             this.code = obj.code;
@@ -219,6 +211,13 @@ export default {
             Indicator.open('加载中...');
             this.getExInfo();
             this.getList();
+        }
+        let isMobile = /Android|WebOS|iPhone|iPod|BlackBerry|iPad|pad|pod|phone|ios|Mobile|IEMobile|MQQBrowser|BrowserNG|Symbian/i.test(navigator.userAgent);
+        if(isMobile){
+            this.$router.push({ path: '/m_market/'+ this.code });
+            window.location.reload();
+        }else{
+            document.getElementById('app').style.minWidth = '768px';
         }
 
         document.documentElement.style.fontSize = "100px";

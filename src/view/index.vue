@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-         <m-head to="home"></m-head>
+         <m-head to="download"></m-head>
         <div class="body-m">
             <img src="./../assets/img/logo_m.png" class="logo">
             <p class="txt1">Global Cryptocurrency</p>
