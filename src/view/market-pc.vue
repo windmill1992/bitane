@@ -8,7 +8,8 @@
                         <img :src="logos[code]" alt="logo">
                     </div>
                     <div class="info fl">
-                        <p class="name">{{title}}({{code | capitalize}})</p>
+                        <p class="name" v-if="code != ''">{{title}}({{code | capitalize}})</p>
+                        <p class="name" v-else>{{title}}</p>
                         <p class="intro" id="intro">{{bitInfo.exchangeAbstract}}</p>
                         <p class="link">
                             <span>Official Web Address：</span>
@@ -19,7 +20,7 @@
                     </div>
                 </div>
                 <div class="right fl">
-                    <p class="rank">Ranking:NO{{bitInfo.ranking}}</p>
+                    <p class="rank" v-if="code != ''">Ranking:NO{{bitInfo.ranking}}</p>
                     <p class="p1">24H AMOUNT</p>
                     <p class="price">¥{{bitInfo.turnoverCNY | numFmt}}</p>
                     <p><span class="us">(≈${{bitInfo.turnoverUSD | numFmt}})</span></p>
@@ -30,7 +31,7 @@
                 <table class="market">
                     <tr>
                         <th>Name</th>
-                        <th>Transaction</th>
+                        <th v-if="code != ''">Transaction</th>
                         <th>Price</th>
                         <th>Volume</th>
                         <th>Amount</th>
@@ -38,7 +39,7 @@
                     </tr>
                     <tr v-for="item in list" :key="item.kindCode">
                         <td class="name">{{item.kindName != '' ? item.kindName : item.kindCode.split('/')[0]}}</td>
-                        <td>{{item.kindCode}}</td>
+                        <td v-if="code != ''">{{item.kindCode}}</td>
                         <td>￥{{item.legalTendeCNY | numFmt}}</td>
                         <td>{{item.volume | numFmt}} {{item.kindCode.split('/')[1]}}</td>
                         <td>{{item.turnover | numFmt}}</td>
@@ -88,58 +89,84 @@ export default {
     },
     methods: {
         getList() {
-            this.$axios.get(`${baseUrl}/market/market-rest/exchange-market-info`, {
-                params: { exchangeCode: this.code }
-            })
-            .then(res => {
-                Indicator.close();
-                if (res.data.code == 0) {
-                    this.list = res.data.data;
-                }else{
+            if(this.code){
+                this.$axios.get(`${baseUrl}/market/market-rest/exchange-market-info`, {
+                    params: { exchangeCode: this.code }
+                })
+                .then(res => {
+                    Indicator.close();
+                    if (res.data.code == 0) {
+                        this.list = res.data.data;
+                    }else{
+                        Toast({
+                            message: res.data.resultMsg,
+                            position: 'bottom'
+                        })
+                    }
+                })
+                .catch(res => {
+                    Indicator.close();
                     Toast({
-                        message: res.data.resultMsg,
+                        message: '未知错误！',
                         position: 'bottom'
                     })
-                }
-            })
-            .catch(res => {
-                Indicator.close();
-                Toast({
-                    message: '未知错误！',
-                    position: 'bottom'
+                });
+            }else{
+                this.$axios.post(`${baseUrl}/market/market-rest/market-info-list-v2`, { currencyCode: '', marketType: 1, pageIndex: 1, pageSize: 500, sortType: 7 })
+                .then(res => {
+                    Indicator.close();
+                    if(res.data.code == 0){
+                        this.list = res.data.data;
+                    }else{
+                        Toast({
+                            message: res.data.resultMsg,
+                            position: 'bottom'
+                        })
+                    }
                 })
-            });
+                .catch(res => {
+                    Indicator.close();
+                    Toast({
+                        message: '未知错误！',
+                        position: 'bottom'
+                    })
+                });
+            }
         },
         getExInfo() {
-            this.$axios.post(`${baseUrl}/market/market-rest/select-exchangeList`, { exchangeId: this.ids[this.code] })
-            .then(res => {
-                if(res.data.code == 0){
-                    this.bitInfo = res.data.data;
-                    let $p = document.getElementById('intro');
-                    $p.classList.remove('all');
-                    setTimeout(() => {
-                        let h = $p.offsetHeight;
-                        if(h > 75){
-                            this.showAll = true;
-                            $p.classList.add('all');
-                            $p.parentElement.style.height = 'auto';
-                        }else{
-                            this.showAll = false;
-                        }
-                    }, 30);
-                }else{
+            if(this.code){
+                this.$axios.post(`${baseUrl}/market/market-rest/select-exchangeList`, { exchangeId: this.ids[this.code] })
+                .then(res => {
+                    if(res.data.code == 0){
+                        this.bitInfo = res.data.data;
+                        let $p = document.getElementById('intro');
+                        $p.classList.remove('all');
+                        setTimeout(() => {
+                            let h = $p.offsetHeight;
+                            if(h > 75){
+                                this.showAll = true;
+                                $p.classList.add('all');
+                                $p.parentElement.style.height = 'auto';
+                            }else{
+                                this.showAll = false;
+                            }
+                        }, 30);
+                    }else{
+                        Toast({
+                            message: res.data.resultMsg,
+                            position: 'bottom'
+                        })
+                    }
+                })
+                .catch(res => {
                     Toast({
-                        message: res.data.resultMsg,
+                        message: '未知错误！',
                         position: 'bottom'
                     })
-                }
-            })
-            .catch(res => {
-                Toast({
-                    message: '未知错误！',
-                    position: 'bottom'
                 })
-            })
+            }else{
+                
+            }
         },
         lookAll() {
             let $p = document.getElementById('intro');
@@ -196,7 +223,11 @@ export default {
     mounted() {
         if(this.$route.params){
             let obj = this.$route.params;
-            this.code = obj.code;
+            if(obj.code){
+                this.code = obj.code;
+            }else{
+                this.code = '';
+            }
             if(obj.title){
                 this.title = obj.title;
                 setTitle(obj.title);
@@ -214,7 +245,11 @@ export default {
         }
         let isMobile = /Android|WebOS|iPhone|iPod|BlackBerry|iPad|pad|pod|phone|ios|Mobile|IEMobile|MQQBrowser|BrowserNG|Symbian/i.test(navigator.userAgent);
         if(isMobile){
-            this.$router.push({ path: '/m_market/'+ this.code });
+            if(this.code){
+                this.$router.push({ path: '/m_market/'+ this.code });
+            }else{
+                this.$router.push({ path: '/m_market' });
+            }
             window.location.reload();
         }else{
             document.getElementById('app').style.minWidth = '768px';
@@ -241,7 +276,11 @@ export default {
         $route (to, from) {
             if(this.code != to.params.code){
                 let obj = to.params;
-                this.code = obj.code;
+                if(obj.code){
+                    this.code = obj.code;
+                }else{
+                    this.code = '';
+                }
                 if(obj.title){
                     this.title = obj.title;
                     setTitle(obj.title);

@@ -32,6 +32,14 @@ const router = new Router({
       }
     },
     {
+      path: '/m_market',
+      name: 'MarketIndex',
+      component: Market,
+      meta: {
+        title: '交易平台实时行情-币探'
+      }
+    },
+    {
       path: '/m_about',
       name: 'About',
       component: About,
